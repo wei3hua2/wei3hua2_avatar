@@ -1,12 +1,25 @@
 var express = require('express');
+var config = require('./config');
 
-var app = express.createServer(express.logger());
+var main = require('./server-lib/mainServer');
 
-app.get('/', function(request, response) {
-  response.send('Hello World!');
+var port = process.env.PORT || config.DEFAULT_PORT;
+
+var server = main.createServer(express,__dirname);
+
+var _handleMainRequest = function(req, res){
+    res.render('main/index', {
+        layout : true
+    });
+}
+
+
+server.get('/', function(req, res) {
+    _handleMainRequest(req, res);
 });
 
-var port = process.env.PORT || 5000;
-app.listen(port, function() {
-  console.log("Listening on " + port);
+server.listen(port, function() {
+    console.log("Listening on port : " + port);
 });
+
+console.log("APP STARTED!");

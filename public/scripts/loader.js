@@ -74,7 +74,9 @@ window.addEventListener("load", function() {
         'loader!scripts/ui/util.js']
     }, {
         complete : function() {
-            //impress().init();
+            $('#progress-container').hide();
+            $('#main').show();
+            
             var cav = new wei3hua2.ui({});
             cav.init();
             

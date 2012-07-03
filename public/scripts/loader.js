@@ -25,6 +25,11 @@ window.addEventListener("load", function() {
             numLoaded++;
             if(isImage) {
                 var image = new Image();
+                
+                image.onload = function(){
+                    console.log('loaded : '+this.src)
+                };
+                
                 image.src = resource.url;
                 wei3hua2.images[resource.url] = image;
             }
@@ -48,7 +53,10 @@ window.addEventListener("load", function() {
 
     Modernizr.load([{
         load : ['loader!scripts/lib/kinetic-v3.10.2.js',
-        //'loader!img/wei3hua2.png',
+        'loader!img/wei3hua2.png',
+        'loader!img/wei3hua2_eyes_normal.png',
+        'loader!img/mouth_open.png',
+        'loader!img/mouth_plain.png',
         'loader!scripts/lib/impress.js',
         'loader!scripts/ui/canvas_main.js',
         'loader!scripts/ui/wei3hua2_layer.js',

@@ -12,15 +12,18 @@ wei3hua2.ui = (function(options) {
         fill : "#FFD2FF"
     });
     
-    var wei3hua2_main = new Me({
-        width : canvasWidth,
-        height : canvasHeight
-    });
+    var main_options = {
+        canvasSize : {
+            width : canvasWidth,
+            height : canvasHeight
+        }
+    };
+    
+    var wei3hua2_main = new Me(main_options);
     
     this.init = function(){
         initBackground();
         stage.add(wei3hua2_main.getLayer());
-        
     }
     
     function initBackground() {

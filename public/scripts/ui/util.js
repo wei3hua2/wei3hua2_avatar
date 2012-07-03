@@ -12,11 +12,19 @@ wei3hua2.ui_util = (function() {
 
         cb(image);
     }
-    var initImgItem = function(imgObj, cb, imgUrl , myPosition, buffer) {
-        imgObj.onload = function() {
-            _loadImg(imgObj, cb, myPosition,buffer);
-        };
-        imgObj.src = imgUrl;
+    var initImgItem = function(imgObj, cb, myPosition, buffer) {
+        // imgObj.onload = function() {
+            // _loadImg(imgObj, cb, myPosition,buffer);
+        // };
+        // imgObj.src = imgUrl;
+        var buf = buffer || {x:0,y:0};
+        var kImage = new Kinetic.Image({
+            x : myPosition.x + buf.x,
+            y : myPosition.y + buf.y,
+            image : imgObj
+        });
+        
+        cb(kImage);
     }
     return {
         initImgItem : initImgItem

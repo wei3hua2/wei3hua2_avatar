@@ -4,6 +4,9 @@ wei3hua2.ui_converse = (function(myPosition) {
     var mouthPlain = 'img/mouth_plain.png';
     var mouthOpen = 'img/mouth_open.png';
 
+    var mouthPlainImg = wei3hua2.images[mouthPlain];
+    var mouthOpenImg = wei3hua2.images[mouthOpen];
+
     var xBuffer = 190;
     var yBuffer = 50;
 
@@ -31,7 +34,6 @@ wei3hua2.ui_converse = (function(myPosition) {
         cornerRadius : 10
     });
 
-    var mouthImg = new Image();
     var mouthItem;
     var mouthBuffer = {
         x : 83,
@@ -43,33 +45,31 @@ wei3hua2.ui_converse = (function(myPosition) {
     this.init = function(layer) {
         mainLayer = layer;
 
-        util.initImgItem(mouthImg, function(kImage) {
-            if(!mouthItem){
-                mouthItem = kImage;
+        util.initImgItem(mouthPlainImg, function(kImage) {
+            mouthItem = kImage;
                 
-                textItem.hide();
-                layer.add(textItem);
-                layer.add(mouthItem);
-            }
-            layer.draw();
+            textItem.hide();
+            layer.add(textItem);
+            layer.add(mouthItem);
             
-
-        }, mouthPlain, myPosition, mouthBuffer);
+        }, myPosition, mouthBuffer);
     }
 
     this.talk = function(txt, cb) {
         textItem.setText(txt);
-        mouthImg.src = mouthOpen;
+        
+        
+        console.log('mouth item : '+mouthItem.setImage);
+        mouthItem.setImage(mouthOpenImg);
+        //mouthImg.src = mouthOpen;
 
         textItem.show();
         mainLayer.draw();
 
-        console.log('this.talk');
         setTimeout(function() {
             if(textItem) {
-                console.log('text hide');
                 textItem.hide();
-                mouthImg.src = mouthPlain;
+                mouthItem.setImage(mouthPlainImg);
                 mainLayer.draw();
             }
         }, 2000);

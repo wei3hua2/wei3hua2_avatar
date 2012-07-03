@@ -3,7 +3,7 @@ wei3hua2.ui_eyes = (function(myPosition) {
 
     var eyesNormal = 'img/wei3hua2_eyes_normal.png';
 
-    var eyesImg = new Image();
+    var eyesItemImg = wei3hua2.images[eyesNormal];
     var eyesItem;
 
     var eyesBuffer = {
@@ -49,15 +49,15 @@ wei3hua2.ui_eyes = (function(myPosition) {
         mainLayer = layer;
         var defaultPos = defaultPupilPosition;
         setPupilPosition(defaultPos.left, defaultPos.right);
-
-        util.initImgItem(eyesImg, function(kImage) {
+        
+        
+        util.initImgItem(eyesItemImg, function(kImage){
             eyesItem = kImage;
 
             layer.add(eyesItem);
             layer.add(pupil.left);
             layer.add(pupil.right);
-            layer.draw();
-        }, eyesNormal, myPosition, eyesBuffer);
+        }, myPosition, eyesBuffer);
     }
 
 

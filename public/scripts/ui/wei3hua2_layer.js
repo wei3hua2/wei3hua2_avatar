@@ -1,18 +1,20 @@
-wei3hua2.ui_me = (function(canvasSize){
+wei3hua2.ui_me = (function(options){
+    
+    var canvasSize = options.canvasSize;
+    //var stage = options.stage;
+    
     var util = wei3hua2.ui_util;
     var converseItemClass = wei3hua2.ui_converse;
     var eyesItemClass = wei3hua2.ui_eyes;
     var bodyItemClass = wei3hua2.ui_body;
     
-    var imgUrl = 'img/wei3hua2.png';
     var widthBuffer = 200;
     var heightBuffer = 20;
     
     var layer = new Kinetic.Layer();
+    
     var converse_item;
     var eyes_item;
-
-    var bodyItem = new Image();
     
     var myPosition = {
         x : canvasSize.width / 2 + widthBuffer,
@@ -35,7 +37,7 @@ wei3hua2.ui_me = (function(canvasSize){
     
     var _addItemToLayer = function(item){
         layer.add(item);
-        layer.draw();
+        //layer.draw();
     }
     
     var _setConverseItem = function(imgPos){
@@ -60,6 +62,7 @@ wei3hua2.ui_me = (function(canvasSize){
    
    
     setInterval(function(){
+        console.log('talk');
         converse_item.talk("Hi!");
     },5000);
 

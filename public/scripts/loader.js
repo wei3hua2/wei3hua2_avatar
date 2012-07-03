@@ -27,7 +27,7 @@ window.addEventListener("load", function() {
                 var image = new Image();
                 
                 image.onload = function(){
-                    console.log('loaded : '+this.src)
+                    //console.log('loaded : '+this.src);
                 };
                 
                 image.src = resource.url;
@@ -53,7 +53,7 @@ window.addEventListener("load", function() {
 
     Modernizr.load([{
         load : [
-        'loader!scripts/lib/kinetic-v3.10.2.js',
+        'loader!scripts/lib/kinetic-v3.10.2.min.js',
         
         'loader!img/wei3hua2.png',
         'loader!img/wei3hua2_eyes_normal.png',
@@ -74,11 +74,19 @@ window.addEventListener("load", function() {
         'loader!scripts/ui/util.js']
     }, {
         complete : function() {
-            $('#progress-container').hide();
-            $('#main').show();
+            try{
+                var cav = new wei3hua2.ui({});
+                cav.init();
+                
+                $('#progress-container').hide();
+                $('#main').show();
+                $('#chat_text').focus();
             
-            var cav = new wei3hua2.ui({});
-            cav.init();
+            }catch(err){
+                console.log('err : '+err);
+                
+                $('#progress-container').text('Oh oh... an error has occurred while loading, Please reload the browser');
+            }
             
             console.log('complete 2');
         }

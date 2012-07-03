@@ -1,5 +1,9 @@
 var wei3hua2 = {
-    images : {}
+    images : {},
+    settings : {
+        canvasWidth : 900,
+        canvasHeight : 600
+    }
 };
 
 window.addEventListener("load", function() {
@@ -43,12 +47,22 @@ window.addEventListener("load", function() {
     }]);
 
     Modernizr.load([{
-        load : ['loader!img/wei3hua2.png','loader!scripts/lib/impress.js']
+        load : ['loader!scripts/lib/kinetic-v3.10.2.js',
+        //'loader!img/wei3hua2.png',
+        'loader!scripts/lib/impress.js',
+        'loader!scripts/ui/canvas_main.js',
+        'loader!scripts/ui/wei3hua2_layer.js',
+        'loader!scripts/ui/wei3hua2_converse.js',
+        'loader!scripts/ui/wei3hua2_eyes.js',
+        'loader!scripts/ui/wei3hua2_body.js',
+        'loader!scripts/ui/util.js']
     }, {
         complete : function() {
-            impress().init();
+            //impress().init();
+            var cav = new wei3hua2.ui({});
+            cav.init();
+            
             console.log('complete 2');
-            console.log(wei3hua2.images["img/wei3hua2.png"]);
         }
     }]);
 }, false);

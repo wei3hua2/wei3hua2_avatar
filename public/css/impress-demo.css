@@ -55,7 +55,7 @@ body {
     
     background: rgb(215, 215, 215);
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 220, 220)), to(rgb(10, 10, 10)));
-    background: -webkit-radial-gradient(rgb(30, 30, 30), rgb(0, 0, 0));
+    background: -webkit-radial-gradient(rgb(50, 50, 50), rgb(0, 0, 0));
     background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));
     background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));
     background:      -o-radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));

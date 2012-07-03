@@ -33,7 +33,7 @@ wei3hua2.ui = (function(options) {
             y : 0,
             width : canvasWidth,
             height : canvasHeight,
-            fill : "#15324E"
+            //fill : "#15324E"
         }));
          stage.add(bglayer);
          

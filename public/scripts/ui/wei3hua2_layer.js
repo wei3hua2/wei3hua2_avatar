@@ -8,8 +8,8 @@ wei3hua2.ui_me = (function(options){
     var eyesItemClass = wei3hua2.ui_eyes;
     var bodyItemClass = wei3hua2.ui_body;
     
-    var widthBuffer = 200;
-    var heightBuffer = 20;
+    var widthBuffer = 100;
+    var heightBuffer = 50;
     
     var layer = new Kinetic.Layer();
     
@@ -62,7 +62,6 @@ wei3hua2.ui_me = (function(options){
    
    
     setInterval(function(){
-        console.log('talk');
         converse_item.talk("Hi!");
     },5000);
 

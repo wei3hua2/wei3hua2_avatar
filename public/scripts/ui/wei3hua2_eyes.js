@@ -13,11 +13,11 @@ wei3hua2.ui_eyes = (function(myPosition) {
 
     var leftPupilBuffer = {
         x : 40,
-        y : 25
+        y : 28
     };
     var rightPupilBuffer = {
         x : 60,
-        y : 25
+        y : 28
     };
     var defaultPupilPosition = {
         left : {

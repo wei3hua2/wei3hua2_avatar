@@ -52,13 +52,13 @@ body {
     min-height: 740px;
     color: rgb(224, 211, 30);
     
-    background: rgb(215, 215, 215);
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 220, 220)), to(rgb(10, 10, 10)));
-    background: -webkit-radial-gradient(rgb(50, 50, 50), rgb(0, 0, 0));
+    background: rgb(45, 55, 55);
+    /*background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 220, 220)), to(rgb(10, 10, 10)));
+    background: -webkit-radial-gradient(rgb(100, 100, 200), rgb(30, 30, 80));
     background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));
     background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));
     background:      -o-radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));
-    background:         radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));    
+    background:         radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));    */
 }
 
 /*
@@ -157,6 +157,46 @@ a:focus {
 #overview { display: none }
 
 
+#main_canvas_container{
+	position : absolute;
+}
+#canvas_container {
+	width : 100%;
+}
+
+#chat_text_container{
+	/*display:block;*/
+	margin-left:auto;
+	margin-right:auto;
+	width : 100%;
+}
+#chat_text {
+	background: rgb(15, 15, 15);
+	color:white;
+	font-family:"Comic Sans MS";
+	
+	width:55%;
+	float: right;
+	font-size : 1.5em;
+	height : 1.4em;
+	text-align:center;
+}
+
+::-webkit-input-placeholder {
+	opacity:0.3;
+	text-align:center;
+	padding-top:5px;
+}
+:-moz-placeholder {
+	opacity:0.3;
+	text-align:center;
+	padding-top:5px;    
+}
+:-ms-input-placeholder {
+	opacity:0.3;
+	text-align:center;
+	padding-top:5px;
+}
 
 
 .impress-enabled          { pointer-events: none }

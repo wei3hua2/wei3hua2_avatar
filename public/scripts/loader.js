@@ -2,7 +2,7 @@ var wei3hua2 = {
     images : {},
     settings : {
         canvasWidth : 900,
-        canvasHeight : 600
+        canvasHeight : 550
     }
 };
 
@@ -52,11 +52,19 @@ window.addEventListener("load", function() {
     }]);
 
     Modernizr.load([{
-        load : ['loader!scripts/lib/kinetic-v3.10.2.js',
+        load : [
+        'loader!scripts/lib/kinetic-v3.10.2.js',
+        
         'loader!img/wei3hua2.png',
         'loader!img/wei3hua2_eyes_normal.png',
         'loader!img/mouth_open.png',
         'loader!img/mouth_plain.png',
+        
+        'loader!img/glyphicons-halflings.png',
+        'loader!img/glyphicons-halflings-white.png',
+        'loader!scripts/lib/jquery-1.7.2.min.js',
+        'loader!scripts/lib/bootstrap.js',
+        
         'loader!scripts/lib/impress.js',
         'loader!scripts/ui/canvas_main.js',
         'loader!scripts/ui/wei3hua2_layer.js',

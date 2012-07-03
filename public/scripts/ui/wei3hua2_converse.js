@@ -7,12 +7,12 @@ wei3hua2.ui_converse = (function(myPosition) {
     var mouthPlainImg = wei3hua2.images[mouthPlain];
     var mouthOpenImg = wei3hua2.images[mouthOpen];
 
-    var xBuffer = 190;
-    var yBuffer = 50;
+    var chatBoxXBuffer = 230;
+    var chatBoxYBuffer = 0;
 
     var textItem = new Kinetic.Text({
-        x : myPosition.x - xBuffer,
-        y : myPosition.y - yBuffer,
+        x : myPosition.x - chatBoxXBuffer,
+        y : myPosition.y - chatBoxYBuffer,
         stroke : '#555',
         strokeWidth : 3,
         fill : '#ddd',
@@ -58,8 +58,6 @@ wei3hua2.ui_converse = (function(myPosition) {
     this.talk = function(txt, cb) {
         textItem.setText(txt);
         
-        
-        console.log('mouth item : '+mouthItem.setImage);
         mouthItem.setImage(mouthOpenImg);
         //mouthImg.src = mouthOpen;
 

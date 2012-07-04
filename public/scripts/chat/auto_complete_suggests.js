@@ -1,48 +1,162 @@
-wei3hua2.suggest = (function(){
-    
-    var suggestNotFound = 'Huh? i don\'t understand what ya mean..';
-    
-    var suggestions = {
-        'who are you?' : 'i am wei3hua2',
-        'you are cute!' : 'thank you',
-        'why am i here?' : 'probably looking for my alter ego, James Chong',
-        'what can you do?' : 'i can do many things',
-        'hello' : 'hi ya',
-        'i love you' : 'you don\'t know what love means'
+wei3hua2.suggest = (function() {
+
+    var history = [];
+    var suggestNotFound = {
+        ans : 'Huh? i don\'t understand what ya mean..',
+        action : 'normal'
     };
-    
-    this.getAllSuggests = function(){
+    var suggestions = {
+        'who are you?' : {
+            ans : 'wei3hua2',
+            action : 'normal'
+        },
+        'you are cute!' : {
+            ans : 'thank you',
+            action : 'normal'
+        },
+        'why am i here?' : {
+            ans : 'probably looking for my alter ego, James Chong',
+            action : 'normal'
+        },
+        'what can you do?' : {
+            ans : 'i can do many things',
+            action : 'normal'
+        },
+        'hi' : {
+            ans : 'wassup..',
+            action : 'normal'
+        },
+        'i love you' : {
+            ans : 'you don\'t know what love means',
+            action : 'normal'
+        },
+        'poor thing' : {
+            ans : 'nah, i\'m not the self-pity kinda guy',
+            action : 'normal'
+        },
+        'nvm' : {
+            ans : 'Alrighty, cool..',
+            action : 'normal'
+        },'boring' : {
+            ans : 'Want me to recommend some interesting site?',
+            action : 'normal'
+        },'any sites to recommend?' : {
+            ans : '9gag.com... Let me show you some interesting stuff?',
+            action : 'question'
+        },'who is James Chong' : {
+            ans : 'He\'s my alter ego. We been sharing a body for decades years. Sharing shit with asshole is never easy, nature had it that both are meant for each other. so i decided to divorce his body & lease a body from sp-studio.de & manifest myself in cyber space',
+            action : 'normal'
+        },'which country are you from?' : {
+            ans : 'Singapore. Wanna find out more?',
+            action : 'question'
+        }
+    };
+
+    this.getAllSuggests = function() {
         var allSuggest = [];
-        for(var s in suggestions)allSuggest.push(s);
-        
+        for(var s in suggestions)
+        allSuggest.push(s);
+
         return allSuggest;
     }
 
-    this.resolve = function(suggest){
-        //TODO
-        /*{
-            action : 'angry',
-            answer : 'hi ya'
-        }*/
-        
-        
-        return mapper(suggest);
+    this.resolve = function(suggest) {
+        var mapped = mapAnswer(suggest);
+        var historyRecord = suggest;
+
+        if(mapped === suggestNotFound)
+            historyRecord = '';
+
+        history.push(historyRecord);
+
+        return mapped;
     }
-    
-    var mapper = function(suggest){
+    var mapAnswer = function(qn) {
         var answer;
-        switch(suggest){
-            case 'hi':case 'hey':
-            answer = suggestions['hello'];
-            break;
-            
-            default:
-            answer = suggestions[suggest];
-        }
         
-        if(answer===undefined)answer = suggestNotFound;
+        answer = suggestions[qn];
         
+        if(!answer)
+            answer = findSimilarQuestion(qn);
+        if(!answer)
+            answer = findResponseAnswer(qn);
+        if(!answer)
+            answer = suggestNotFound;
+
         return answer;
     }
+    var findSimilarQuestion = function(qn){
+        var ans;
+        _.find(similarQnMappers, function(mapper) {
+            var mappedSug = mapper(qn);
+            if(mappedSug) {
+                ans = suggestions[mappedSug];
+                return true;
+            }
+        });
+        return ans;
+    }
+    var findResponseAnswer = function(qn){
+        var ans;
+        _.find(responseMappers, function(mapper) {
+            var mappedAns = mapper(qn);
+            if(mappedAns){
+                ans = mappedAns;
+                return true;
+            }
+        });
+        
+        switch(ans){
+            case('yes'):return performYesResponse();
+            case('no'):return performNoResponse();
+            case('dunknow'):return performDunKnowResponse();
+        }
+        
+        return undefined;
+    }
+    var performYesResponse = function(){
+    }
+    var performNoResponse = function(){
+        //TODO: check history
+        return suggestions['nvm'];
+    }
+    var performDunKnowResponse = function(){
+        //TODO: check history
+        return suggestions['nvm'];
+    }
     
+    
+    //MAPPERS BELOW
+    
+    var helloMapping = function(qn) {
+        var ar = ['hello', 'hey', 'wassup'];
+        if(_.include(ar, qn))return 'hi';
+    }
+    var nvmMapping = function(qn){
+        var ar = ['nevermind'];
+        if(_.include(ar, qn))return 'nvm';
+    }
+    var boringMapping = function(qn){
+        var ar = ['bored','i\'m bored'];
+        if(_.include(ar, qn))return 'boring';
+    }
+    
+    var similarQnMappers = [helloMapping, nvmMapping,boringMapping];
+    
+    //TODO: track history, given a yes answer
+    var yesMapping = function(qn){
+        var ar = ['yes','sure','ok','yeah','yup','yap'];
+        if(_.include(ar, qn))return 'yes';
+    }
+    var noMapping = function(qn){
+        var ar = ['no','nah','nope'];
+        if(_.include(ar, qn))return 'no';
+    }
+    var dunknowMapping = function(qn){
+        var ar = ['i don\'t know','oh'];
+        if(_.include(ar, qn))return 'dunknow';
+    }
+    
+    var responseMappers = [yesMapping,noMapping,dunknowMapping];
+
 });

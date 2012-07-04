@@ -34,7 +34,11 @@ wei3hua2.ui_me = (function(options){
     }
     
     this.talk = function(txt){
-        converse_item.talk(txt);
+        var handler = setTimeout(function(){
+            converse_item.talk.apply(this,[txt]);
+        },300);
+        
+        wei3hua2.pushTimeoutHandler(handler,true);
     }
     
     
@@ -61,10 +65,5 @@ wei3hua2.ui_me = (function(options){
         _setConverseItem(pos);
         _setEyesItem(pos);
     });
-   
-   
-    // setInterval(function(){
-        // converse_item.talk("Hi!");
-    // },5000);
 
 });

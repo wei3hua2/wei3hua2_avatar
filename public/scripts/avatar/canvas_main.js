@@ -66,5 +66,10 @@ wei3hua2.avatar = (function(options) {
         wei3hua2_main.talk(txt);
     }
     
+    // wei3hua2.pushTimeoutHandler(
+        // setTimeout(function(){
+            // that.talk.apply(this,['Wassup...']);
+        // },5000),true);
+    
     
 });

@@ -64,13 +64,16 @@ wei3hua2.ui_converse = (function(myPosition) {
         textItem.show();
         mainLayer.draw();
 
-        setTimeout(function() {
+        var handler = setTimeout(function() {
             if(textItem) {
                 textItem.hide();
                 mouthItem.setImage(mouthPlainImg);
                 mainLayer.draw();
             }
         }, 2000);
+        
+        wei3hua2.pushTimeoutHandler(handler);
+        
         if(cb)
             cb();
     }

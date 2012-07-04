@@ -17,9 +17,17 @@ wei3hua2.chat_box = (function(avatar){
         });
     }
     var talkToMe = function() {
-        var ans = solution.resolve(event.srcElement.value);
+        var qn = event.srcElement.value;
+        qn = qn.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
         
-        avatar.talk(ans);
+        if(!qn){
+            event.srcElement.value = '';
+            return;
+        }
+        
+        var resp = solution.resolve(qn);
+        
+        avatar.talk(resp.ans);
         
         setPlaceHolderText(event.srcElement.value);
         clearChatText();

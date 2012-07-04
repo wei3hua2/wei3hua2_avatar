@@ -619,10 +619,11 @@
     document.addEventListener("impress:init", function (event) {
         
         var api = event.detail.api;
+        
         //set it for global access
         window.wei3hua2.impress_api = api;
         
-        
+        /*
         document.addEventListener("keydown", function ( event ) {
             if ( event.keyCode === 9 || ( event.keyCode >= 32 && event.keyCode <= 34 ) || (event.keyCode >= 37 && event.keyCode <= 40) ) {
                 event.preventDefault();
@@ -709,7 +710,7 @@
                 }
             }
         }, false);
-        
+        */
         
         
         // rescale presentation when window is resized

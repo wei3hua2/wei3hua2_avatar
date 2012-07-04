@@ -4,8 +4,21 @@ var wei3hua2 = {
         canvasWidth : 900,
         canvasHeight : 300
     },
-    impress_api : undefined
+    impress_api : undefined,
+    timeouts : []
 };
+
+wei3hua2.pushTimeoutHandler = function(timeout,newAction){
+    if(newAction){
+        wei3hua2.timeouts.forEach(function(t){
+            clearTimeout(t);
+        });
+        wei3hua2.timeouts = [];
+    }
+    
+    wei3hua2.timeouts.push(timeout);
+}
+
 
 window.addEventListener("load", function() {
     Modernizr.addTest("standalone", function() {
@@ -37,13 +50,14 @@ window.addEventListener("load", function() {
         };
         return resource;
     });
-    
-    function progressUpdater(){
+    function progressUpdater() {
         function checkProgress() {
             var p = Math.round((numLoaded / numPreload) * 100);
-            document.getElementById('loading_progress_txt').innerHTML = p+'%';
-            if(p < 100) setTimeout(checkProgress, 30);
+            document.getElementById('loading_progress_txt').innerHTML = p + '%';
+            if(p < 100)
+                setTimeout(checkProgress, 30);
         }
+
         checkProgress();
     }
 
@@ -53,30 +67,30 @@ window.addEventListener("load", function() {
     }, {
         complete : function() {
             console.log('complete 1');
-            
+
             progressUpdater();
-            
+
             var progress = document.getElementById('progress-container');
             progress.style.display = 'block';
-            
+
             impress().init();
         }
     }]);
 
     Modernizr.load([{
         load : [
-        'loader!scripts/lib/kinetic-v3.10.2.min.js', 
-        
-        'loader!img/wei3hua2.png', 
-        'loader!img/wei3hua2_eyes_normal.png', 
-        'loader!img/mouth_open.png',
-        'loader!img/mouth_plain.png', 
-        'loader!img/glyphicons-halflings.png', 
-        'loader!img/glyphicons-halflings-white.png',
-         
+        'loader!scripts/lib/kinetic-v3.10.2.min.js',
         'loader!scripts/lib/jquery-1.7.2.min.js', 
         'loader!scripts/lib/bootstrap.js',
-        
+        'loader!scripts/lib/underscore-min.js',
+         
+        'loader!img/wei3hua2.png', 
+        'loader!img/wei3hua2_eyes_normal.png', 
+        'loader!img/mouth_open.png', 
+        'loader!img/mouth_plain.png', 
+        'loader!img/glyphicons-halflings.png', 
+        'loader!img/glyphicons-halflings-white.png', 
+         
         'loader!scripts/avatar/canvas_main.js', 
         'loader!scripts/avatar/wei3hua2_layer.js', 
         'loader!scripts/avatar/wei3hua2_converse.js', 
@@ -85,8 +99,7 @@ window.addEventListener("load", function() {
         'loader!scripts/avatar/util.js',
          
         'loader!scripts/chat/auto_complete_suggests.js', 
-        'loader!scripts/chat/chat_box.js',
-         
+        'loader!scripts/chat/chat_box.js', 
         'loader!scripts/full_dom_operations.js']
     }, {
         complete : function() {
@@ -97,12 +110,12 @@ window.addEventListener("load", function() {
 
                 var chatBox = new wei3hua2.chat_box(avatar);
                 chatBox.initEvents();
-                
-                performImpressOperation.apply(this,[]);
+
+                performImpressOperation.apply(this, []);
 
                 //TODO
-                //wei3hua2.general_dom.initEvents(); 
-                
+                //wei3hua2.general_dom.initEvents();
+
                 switchLoadingToNormalScreen.apply(this);
             } catch(err) {
                 console.log('err : ' + err);
@@ -113,12 +126,11 @@ window.addEventListener("load", function() {
         }
     }]);
 
-    var performImpressOperation = function(){
+    var performImpressOperation = function() {
         wei3hua2.impress_api.removeFirstStep();
         wei3hua2.impress_api.goToFirstStep(1000);
     }
     var switchLoadingToNormalScreen = function() {
-        //$('#progress-container').hide();
         $('#main_avatar_container').show();
         $('#chat_text').focus();
     }

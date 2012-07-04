@@ -196,6 +196,14 @@ a:focus {
 	height : 1.4em;
 	text-align:center;
 }
+.typeahead{
+	width:35%;
+	background : black;
+	font-family:"Comic Sans MS";
+	font-size:1.3em;
+	text-align:center;
+}
+
 
 ::-webkit-input-placeholder {
 	opacity:0.3;

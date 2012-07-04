@@ -1,7 +1,6 @@
 wei3hua2.ui_me = (function(options){
     
     var canvasSize = options.canvasSize;
-    //var stage = options.stage;
     
     var util = wei3hua2.ui_util;
     var converseItemClass = wei3hua2.ui_converse;
@@ -34,10 +33,13 @@ wei3hua2.ui_me = (function(options){
         eyes_item.trackMouseLocation();
     }
     
+    this.talk = function(txt){
+        converse_item.talk(txt);
+    }
+    
     
     var _addItemToLayer = function(item){
         layer.add(item);
-        //layer.draw();
     }
     
     var _setConverseItem = function(imgPos){
@@ -61,8 +63,8 @@ wei3hua2.ui_me = (function(options){
     });
    
    
-    setInterval(function(){
-        converse_item.talk("Hi!");
-    },5000);
+    // setInterval(function(){
+        // converse_item.talk("Hi!");
+    // },5000);
 
 });

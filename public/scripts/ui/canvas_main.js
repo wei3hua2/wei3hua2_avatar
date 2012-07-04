@@ -1,3 +1,7 @@
+//difference between this and wei3hua2_layer.js lies in the scope
+//this class applies to the whole canvas ecosystem, whereas wei3hua2_layer.js
+//only applies to avatar 
+
 wei3hua2.ui = (function(options) {
     var Me = wei3hua2.ui_me,
     canvasWidth = wei3hua2.settings.canvasWidth,
@@ -53,6 +57,13 @@ wei3hua2.ui = (function(options) {
             wei3hua2_main.updateOutOfCanvasReaction(stage.getMousePosition());
         });
 
+    }
+    
+    
+    //INTERACTIVE FUNCTIONS
+    
+    this.talk = function(txt){
+        wei3hua2_main.talk(txt);
     }
     
     

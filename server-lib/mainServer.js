@@ -17,8 +17,6 @@ var createServer = function(express, mainDirectory){
 }
 
 
-
-
 module.exports = {
     createServer : createServer
 }

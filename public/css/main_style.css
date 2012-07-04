@@ -53,12 +53,6 @@ body {
     color: rgb(224, 211, 30);
     
     background: rgb(45, 55, 55);
-    /*background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 220, 220)), to(rgb(10, 10, 10)));
-    background: -webkit-radial-gradient(rgb(100, 100, 200), rgb(30, 30, 80));
-    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));
-    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));
-    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));
-    background:         radial-gradient(rgb(240, 240, 240), rgb(0, 0, 0));    */
 }
 
 /*
@@ -77,8 +71,6 @@ a {
     padding: 0 0.1em;
     text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
     border-radius: 0.2em;
-    
-    /*background: rgba(255,255,255,0.5);*/
 }
 
 a:hover,
@@ -100,6 +92,7 @@ a:focus {
 
 
 #progress-container{
+	display : none;
 	width : 10em;
 	
 	position : fixed;
@@ -112,32 +105,23 @@ a:focus {
 	color : #FFFFFF;
 	font-family:"Comic Sans MS";
 	font-size : 4em;
-}
-
-.fallback-message {
-    font-family: sans-serif;
-    line-height: 1.3;
+	
+	/*-webkit-transform: translateX(-50px) rotate(-90deg) scale(1.2);
+    -moz-transform:    translateX(10px);
+    -ms-transform:     translateX(10px);
+    -o-transform:      translateX(10px);
+    transform:         translateX(10px);
     
-    width: 780px;
-    padding: 10px 10px 0;
-    margin: 20px auto;
-
-    border: 1px solid #E4C652;
-    border-radius: 10px;
-    background: #EEDC94;
-}
-
-.fallback-message p {
-    margin-bottom: 10px;
-}
-
-.impress-supported .fallback-message {
-    display: none;
+	-webkit-transition: 3.5s;
+    -moz-transition:    3.5s;
+    -ms-transition:     3.5s;
+    -o-transition:      3.5s;
+    transition:         3.5s;*/
 }
 
 
 .step {
-    position: relative;
+    /*position: relative;
     width: 900px;
     padding: 40px;
     margin: 20px auto;
@@ -150,13 +134,13 @@ a:focus {
 
     font-family: 'PT Serif', georgia, serif;
     font-size: 48px;
-    line-height: 1.5;
+    line-height: 1.5;*/
 }
 
 
 .impress-enabled .step {
     margin: 0;
-    opacity: 0.1;
+    opacity: 0.0;
 
     -webkit-transition: opacity 1s;
     -moz-transition:    opacity 1s;
@@ -169,18 +153,20 @@ a:focus {
 
 
 
-#main{ display: none }
+#main_avatar_container{
+	display: none;
+}
 
 
-#main_canvas_container{
-	position : absolute;
+#avatar_container{
+	/*position : absolute;*/
 }
 #canvas_container {
 	width : 100%;
 }
 
 #chat_text_container{
-	/*display:block;*/
+	display:block;
 	margin-left:auto;
 	margin-right:auto;
 	width : 100%;
@@ -190,8 +176,9 @@ a:focus {
 	color:white;
 	font-family:"Comic Sans MS";
 	
+	margin-left : 24%;
 	width:55%;
-	float: right;
+	/*float: right;*/
 	font-size : 1.5em;
 	height : 1.4em;
 	text-align:center;
@@ -202,6 +189,14 @@ a:focus {
 	font-family:"Comic Sans MS";
 	font-size:1.3em;
 	text-align:center;
+}
+
+
+#main_content_container{
+	width : 60em;
+	height : 40em;
+	background : white;
+	/*opacity:1.0;*/
 }
 
 

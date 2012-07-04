@@ -7,8 +7,8 @@ wei3hua2.ui_me = (function(options){
     var eyesItemClass = wei3hua2.ui_eyes;
     var bodyItemClass = wei3hua2.ui_body;
     
-    var widthBuffer = 100;
-    var heightBuffer = 50;
+    var widthBuffer = -80;
+    var heightBuffer = -60;
     
     var layer = new Kinetic.Layer();
     

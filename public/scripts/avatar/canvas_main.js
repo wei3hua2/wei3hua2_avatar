@@ -2,7 +2,7 @@
 //this class applies to the whole canvas ecosystem, whereas wei3hua2_layer.js
 //only applies to avatar 
 
-wei3hua2.ui = (function(options) {
+wei3hua2.avatar = (function(options) {
     var Me = wei3hua2.ui_me,
     canvasWidth = wei3hua2.settings.canvasWidth,
     canvasHeight = wei3hua2.settings.canvasHeight;

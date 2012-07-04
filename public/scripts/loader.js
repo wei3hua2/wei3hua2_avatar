@@ -2,9 +2,9 @@ var wei3hua2 = {
     images : {},
     settings : {
         canvasWidth : 900,
-        canvasHeight : 550
+        canvasHeight : 300
     },
-    suggest : []
+    impress_api : undefined
 };
 
 window.addEventListener("load", function() {
@@ -47,10 +47,15 @@ window.addEventListener("load", function() {
 
 
     Modernizr.load([{
-        load : []
+        load : ['loader!scripts/lib/my-impress.js']
     }, {
         complete : function() {
             console.log('complete 1');
+            
+            var progress = document.getElementById('progress-container');
+            progress.style.display = 'block';
+            
+            impress().init();
         }
     }]);
 
@@ -60,21 +65,20 @@ window.addEventListener("load", function() {
         
         'loader!img/wei3hua2.png', 
         'loader!img/wei3hua2_eyes_normal.png', 
-        'loader!img/mouth_open.png', 
+        'loader!img/mouth_open.png',
         'loader!img/mouth_plain.png', 
         'loader!img/glyphicons-halflings.png', 
         'loader!img/glyphicons-halflings-white.png',
          
         'loader!scripts/lib/jquery-1.7.2.min.js', 
-        'loader!scripts/lib/bootstrap.js', 
-        'loader!scripts/lib/impress.js', 
+        'loader!scripts/lib/bootstrap.js',
         
-        'loader!scripts/ui/canvas_main.js', 
-        'loader!scripts/ui/wei3hua2_layer.js', 
-        'loader!scripts/ui/wei3hua2_converse.js', 
-        'loader!scripts/ui/wei3hua2_eyes.js', 
-        'loader!scripts/ui/wei3hua2_body.js', 
-        'loader!scripts/ui/util.js',
+        'loader!scripts/avatar/canvas_main.js', 
+        'loader!scripts/avatar/wei3hua2_layer.js', 
+        'loader!scripts/avatar/wei3hua2_converse.js', 
+        'loader!scripts/avatar/wei3hua2_eyes.js', 
+        'loader!scripts/avatar/wei3hua2_body.js', 
+        'loader!scripts/avatar/util.js',
          
         'loader!scripts/chat/auto_complete_suggests.js', 
         'loader!scripts/chat/chat_box.js',
@@ -84,19 +88,20 @@ window.addEventListener("load", function() {
         complete : function() {
             try {
 
-                var avatar = new wei3hua2.ui({});
+                var avatar = new wei3hua2.avatar({});
                 avatar.init();
 
                 var chatBox = new wei3hua2.chat_box(avatar);
                 chatBox.initEvents();
+                
+                performImpressOperation.apply(this,[]);
 
                 //TODO
                 //wei3hua2.general_dom.initEvents(); 
                 
-                switchLoadingToNormalScreen.apply(this,[]);
+                switchLoadingToNormalScreen.apply(this);
             } catch(err) {
                 console.log('err : ' + err);
-
                 $('#progress-container').text('Oh oh... an error has occurred while loading, Please reload the browser');
             }
 
@@ -104,9 +109,13 @@ window.addEventListener("load", function() {
         }
     }]);
 
+    var performImpressOperation = function(){
+        wei3hua2.impress_api.removeFirstStep();
+        wei3hua2.impress_api.goToFirstStep(1000);
+    }
     var switchLoadingToNormalScreen = function() {
-        $('#progress-container').hide();
-        $('#main').show();
+        //$('#progress-container').hide();
+        $('#main_avatar_container').show();
         $('#chat_text').focus();
     }
 }, false);

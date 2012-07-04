@@ -1,22 +1,25 @@
-<!-- <div class="fallback-message">
-    <p>
-        Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.
-    </p>
-    <p>
-        For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.
-    </p>
-</div> -->
-
-<div id="progress-container">
-  Loading...
-</div>
-
 <script src="scripts/loader.js"></script>
-<div id="main">
-    <div id="main_canvas_container">
-        <div id="canvas_container"/>
+<!-- <div id="progress-container" class='step' data-x='-1000' data-y='-500' data-z='-1000'>
+    Loading...
+</div> -->
+<div id='impress'>
+    <div id="progress-container" class='step' data-x='-1000' data-y='-500' data-z='-2000' data-scale='0.1'>
+    Loading...
     </div>
-    <div id="chat_text_container">
-        <input id="chat_text" type="text" placeholder="type here" class="input-xlarge" data-provide="typeahead"/>
+    <div id="main_avatar_container">
+        <div id="avatar_container" class="step">
+            <div id="canvas_container"/>
+        </div>
+        <div id="chat_text_container">
+            <input id="chat_text" type="text" placeholder="type here" data-provide="typeahead"/>
+        </div>
+    </div>
+    <div id="main_content_container" class="step" data-x='300' data-z='-2000' >
+        <p>
+            It's a <strong>presentation tool</strong>
+            <br/>
+            inspired by the idea behind
+            and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.
+        </p>
     </div>
 </div>

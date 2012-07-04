@@ -1,16 +1,10 @@
 wei3hua2.chat_box = (function(avatar){
 
-    var suggest = [];
-    var answer = [];
 
-    var solution = wei3hua2.suggest;
-
-    for(var qn in solution) {
-        suggest.push(qn);
-    }
+    var solution = new wei3hua2.suggest();
 
     $('#chat_text').typeahead({
-        source : suggest
+        source : solution.getAllSuggests()
     });
 
     this.initEvents = function() {
@@ -20,12 +14,10 @@ wei3hua2.chat_box = (function(avatar){
                 case 27 : clearChatText();break;
                 default : break;
             }
-
         });
     }
     var talkToMe = function() {
-        var ans = solution[event.srcElement.value]; 
-        (ans === undefined) ? ans = 'Huh? i don\'t understand what ya mean..' : ans;
+        var ans = solution.resolve(event.srcElement.value);
         
         avatar.talk(ans);
         

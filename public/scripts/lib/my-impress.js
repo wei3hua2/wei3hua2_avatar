@@ -189,11 +189,7 @@
         body.classList.add("impress-supported");
     }
     
-    // GLOBALS AND DEFAULTS
     
-    // This is were the root elements of all impress.js instances will be kept.
-    // Yes, this means you can have more than one instance on a page, but I'm not
-    // sure if it makes any sense in practice ;)
     var roots = {};
     
     // some default config values.
@@ -211,12 +207,7 @@
     // it's just an empty function ... and a useless comment.
     var empty = function () { return false; };
     
-    // IMPRESS.JS API
     
-    // And that's where interesting things will start to happen.
-    // It's the core `impress` function that returns the impress.js API
-    // for a presentation based on the element with given id ('impress'
-    // by default).
     var impress = window.impress = function ( rootId ) {
         
         // If impress.js is not supported by the browser return a dummy API
@@ -262,13 +253,6 @@
         
         var initialized = false;
         
-        // STEP EVENTS
-        //
-        // There are currently two step events triggered by impress.js
-        // `impress:stepenter` is triggered when the step is shown on the 
-        // screen (the transition from the previous one is finished) and
-        // `impress:stepleave` is triggered when the step is left (the
-        // transition to next step just starts).
         
         // reference to last entered step
         var lastEntered = null;
@@ -486,14 +470,7 @@
                 onStepLeave(activeStep);
             }
             
-            // Now we alter transforms of `root` and `canvas` to trigger transitions.
-            //
-            // And here is why there are two elements: `root` and `canvas` - they are
-            // being animated separately:
-            // `root` is used for scaling and `canvas` for translate and rotations.
-            // Transitions on them are triggered with different delays (to make
-            // visually nice and 'natural' looking transitions), so we need to know
-            // that both of them are finished.
+
             css(root, {
                 // to keep the perspective look similar for different scales
                 // we need to 'scale' the perspective, too
@@ -508,15 +485,7 @@
                 transitionDelay: (zoomin ? 0 : delay) + "ms"
             });
             
-            // Here is a tricky part...
-            //
-            // If there is no change in scale or no change in rotation and translation, it means there was actually
-            // no delay - because there was no transition on `root` or `canvas` elements.
-            // We want to trigger `impress:stepenter` event in the correct moment, so here we compare the current
-            // and target values to check if delay should be taken into account.
-            //
-            // I know that this `if` statement looks scary, but it's pretty simple when you know what is going on
-            // - it's simply comparing all the values.
+
             if ( currentState.scale === target.scale ||
                 (currentState.rotate.x === target.rotate.x && currentState.rotate.y === target.rotate.y &&
                  currentState.rotate.z === target.rotate.z && currentState.translate.x === target.translate.x &&
@@ -528,18 +497,7 @@
             currentState = target;
             activeStep = el;
             
-            // And here is where we trigger `impress:stepenter` event.
-            // We simply set up a timeout to fire it taking transition duration (and possible delay) into account.
-            //
-            // I really wanted to make it in more elegant way. The `transitionend` event seemed to be the best way
-            // to do it, but the fact that I'm using transitions on two separate elements and that the `transitionend`
-            // event is only triggered when there was a transition (change in the values) caused some bugs and 
-            // made the code really complicated, cause I had to handle all the conditions separately. And it still
-            // needed a `setTimeout` fallback for the situations when there is no transition at all.
-            // So I decided that I'd rather make the code simpler than use shiny new `transitionend`.
-            //
-            // If you want learn something interesting and see how it was done with `transitionend` go back to
-            // version 0.5.2 of impress.js: http://github.com/bartaz/impress.js/blob/0.5.2/js/impress.js
+
             window.clearTimeout(stepEnterTimeout);
             stepEnterTimeout = window.setTimeout(function() {
                 onStepEnter(activeStep);
@@ -564,19 +522,14 @@
             return goto(next);
         };
         
-        // Adding some useful classes to step elements.
-        //
-        // All the steps that have not been shown yet are given `future` class.
-        // When the step is entered the `future` class is removed and the `present`
-        // class is given. When the step is left `present` class is replaced with
-        // `past` class.
-        //
-        // So every step element is always in one of three possible states:
-        // `future`, `present` and `past`.
-        //
-        // There classes can be used in CSS to style different types of steps.
-        // For example the `present` class can be used to trigger some custom
-        // animations when step is shown.
+        var goToFirstStep = function(duration){
+            
+            var dur = duration || 500;
+            
+            return goto(steps[0],dur);
+        };
+        
+
         root.addEventListener("impress:init", function(){
             // STEP CLASSES
             steps.forEach(function (step) {
@@ -602,22 +555,12 @@
             // last hash detected
             var lastHash = "";
             
-            // `#/step-id` is used instead of `#step-id` to prevent default browser
-            // scrolling to element in hash.
-            //
-            // And it has to be set after animation finishes, because in Chrome it
-            // makes transtion laggy.
-            // BUG: http://code.google.com/p/chromium/issues/detail?id=62820
             root.addEventListener("impress:stepenter", function (event) {
                 window.location.hash = lastHash = "#/" + event.target.id;
             }, false);
             
             window.addEventListener("hashchange", function () {
-                // When the step is entered hash in the location is updated
-                // (just few lines above from here), so the hash change is 
-                // triggered and we would call `goto` again on the same element.
-                //
-                // To avoid this we store last entered hash and compare.
+                
                 if (window.location.hash !== lastHash) {
                     goto( getElementFromHash() );
                 }
@@ -630,34 +573,37 @@
         
         body.classList.add("impress-disabled");
         
+        
+        //James Chong
+        var removeFirstStep = function(){
+            if(steps){
+                steps.shift();
+                return true;
+            }
+            else return false;
+        }
+        
+        
         // store and return API for given impress.js root element
         return (roots[ "impress-root-" + rootId ] = {
             init: init,
             goto: goto,
             next: next,
-            prev: prev
+            prev: prev,
+            removeFirstStep : removeFirstStep,
+            goToFirstStep : goToFirstStep
         });
 
     };
     
-    // flag that can be used in JS to check if browser have passed the support test
     impress.supported = impressSupported;
     
 })(document, window);
 
-// NAVIGATION EVENTS
 
-// As you can see this part is separate from the impress.js core code.
-// It's because these navigation actions only need what impress.js provides with
-// its simple API.
-//
-// In future I think about moving it to make them optional, move to separate files
-// and treat more like a 'plugins'.
 (function ( document, window ) {
     'use strict';
     
-    // throttling function calls, by Remy Sharp
-    // http://remysharp.com/2010/07/21/throttling-function-calls/
     var throttle = function (fn, delay) {
         var timer = null;
         return function () {
@@ -671,36 +617,19 @@
     
     // wait for impress.js to be initialized
     document.addEventListener("impress:init", function (event) {
-        // Getting API from event data.
-        // So you don't event need to know what is the id of the root element
-        // or anything. `impress:init` event data gives you everything you 
-        // need to control the presentation that was just initialized.
+        
         var api = event.detail.api;
+        //set it for global access
+        window.wei3hua2.impress_api = api;
         
-        // KEYBOARD NAVIGATION HANDLERS
-        
-        // Prevent default keydown action when one of supported key is pressed.
+        /*
         document.addEventListener("keydown", function ( event ) {
             if ( event.keyCode === 9 || ( event.keyCode >= 32 && event.keyCode <= 34 ) || (event.keyCode >= 37 && event.keyCode <= 40) ) {
                 event.preventDefault();
             }
         }, false);
         
-        // Trigger impress action (next or prev) on keyup.
-        
-        // Supported keys are:
-        // [space] - quite common in presentation software to move forward
-        // [up] [right] / [down] [left] - again common and natural addition,
-        // [pgdown] / [pgup] - often triggered by remote controllers,
-        // [tab] - this one is quite controversial, but the reason it ended up on
-        //   this list is quite an interesting story... Remember that strange part
-        //   in the impress.js code where window is scrolled to 0,0 on every presentation
-        //   step, because sometimes browser scrolls viewport because of the focused element?
-        //   Well, the [tab] key by default navigates around focusable elements, so clicking
-        //   it very often caused scrolling to focused element and breaking impress.js
-        //   positioning. I didn't want to just prevent this default action, so I used [tab]
-        //   as another way to moving to next step... And yes, I know that for the sake of
-        //   consistency I should add [shift+tab] as opposite action...
+
         document.addEventListener("keyup", function ( event ) {
             if ( event.keyCode === 9 || ( event.keyCode >= 32 && event.keyCode <= 34 ) || (event.keyCode >= 37 && event.keyCode <= 40) ) {
                 switch( event.keyCode ) {
@@ -710,7 +639,7 @@
                              api.prev();
                              break;
                     case 9:  // tab
-                    case 32: // space
+                    //case 32: // space
                     case 34: // pg down
                     case 39: // right
                     case 40: // down
@@ -718,7 +647,7 @@
                              break;
                 }
                 
-                event.preventDefault();
+                //event.preventDefault();
             }
         }, false);
         
@@ -781,6 +710,8 @@
             }
         }, false);
         
+        */
+        
         // rescale presentation when window is resized
         window.addEventListener("resize", throttle(function () {
             // force going to active step again, to trigger rescaling
@@ -790,11 +721,3 @@
     }, false);
         
 })(document, window);
-
-// THAT'S ALL FOLKS!
-//
-// Thanks for reading it all.
-// Or thanks for scrolling down and reading the last part.
-//
-// I've learnt a lot when building impress.js and I hope this code and comments
-// will help somebody learn at least some part of it.

@@ -1,2 +1,4 @@
 - a content div
 - loading show 3D animation
+- track conversation history
+- fallback

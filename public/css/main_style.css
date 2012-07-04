@@ -50,9 +50,9 @@ table {
 body {
     font-family: 'PT Sans', sans-serif;
     min-height: 740px;
-    color: rgb(224, 211, 30);
-    
-    background: rgb(45, 55, 55);
+    color: rgb(24, 11, 30);
+        
+    background: rgb(45, 55, 55); 
 }
 
 /*
@@ -88,35 +88,6 @@ a:focus {
     -ms-transition:     0.5s;
     -o-transition:      0.5s;
     transition:         0.5s;
-}
-
-
-#progress-container{
-	display : none;
-	width : 10em;
-	
-	position : fixed;
-	top : 30%;
-	left : 25%;
-	
-	text-align:center;
-	
-	/*background:transparent;*/
-	color : #FFFFFF;
-	font-family:"Comic Sans MS";
-	font-size : 4em;
-	
-	/*-webkit-transform: translateX(-50px) rotate(-90deg) scale(1.2);
-    -moz-transform:    translateX(10px);
-    -ms-transform:     translateX(10px);
-    -o-transform:      translateX(10px);
-    transform:         translateX(10px);
-    
-	-webkit-transition: 3.5s;
-    -moz-transition:    3.5s;
-    -ms-transition:     3.5s;
-    -o-transition:      3.5s;
-    transition:         3.5s;*/
 }
 
 
@@ -193,9 +164,15 @@ a:focus {
 
 
 #main_content_container{
+	border-radius : 60px;
+	-moz-border-radius: 60px;
+	padding : 60px;
+	
+	box-shadow: 50px 50px 50px #000000;
+	
 	width : 60em;
-	height : 40em;
-	background : white;
+	height : 38em;
+	background : #CCC;
 	/*opacity:1.0;*/
 }
 
@@ -219,3 +196,20 @@ a:focus {
 
 .impress-enabled          { pointer-events: none }
 .impress-enabled #impress { pointer-events: auto }
+
+
+#progress-container{
+	display : none;
+	width : 10em;
+	
+	position : fixed;
+	top : 30%;
+	left : 25%;
+	
+	text-align:center;
+	
+	/*background:transparent;*/
+	color : #FFFFFF;
+	font-family:"Comic Sans MS";
+	font-size : 4em;
+}

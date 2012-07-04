@@ -37,12 +37,14 @@ window.addEventListener("load", function() {
         };
         return resource;
     });
-    function getLoadProgress() {
-        if(numPreload > 0) {
-            return numLoaded / numPreload;
-        } else {
-            return 0;
+    
+    function progressUpdater(){
+        function checkProgress() {
+            var p = Math.round((numLoaded / numPreload) * 100);
+            document.getElementById('loading_progress_txt').innerHTML = p+'%';
+            if(p < 100) setTimeout(checkProgress, 30);
         }
+        checkProgress();
     }
 
 
@@ -51,6 +53,8 @@ window.addEventListener("load", function() {
     }, {
         complete : function() {
             console.log('complete 1');
+            
+            progressUpdater();
             
             var progress = document.getElementById('progress-container');
             progress.style.display = 'block';

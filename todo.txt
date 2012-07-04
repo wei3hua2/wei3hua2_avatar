@@ -2,3 +2,4 @@
 - loading show 3D animation
 - track conversation history
 - fallback
+- feature detection

@@ -18,7 +18,7 @@ wei3hua2.chat_box = (function(avatar){
     }
     var talkToMe = function() {
         var qn = event.srcElement.value;
-        qn = trimString(qn);
+        qn = textSanitizer(qn);
         
         if(!qn){
             event.srcElement.value = '';
@@ -39,7 +39,11 @@ wei3hua2.chat_box = (function(avatar){
         $('#chat_text').attr('placeholder',txt);
     }
     
-    var trimString = function(str){
+    var textSanitizer = function(str){
+        return _trimString(str);
+    }
+    
+    var _trimString = function(str){
         str = str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
         return str;
     }

@@ -67,6 +67,10 @@ wei3hua2.suggest_data = (function() {
             ans : 'Singapore. Wanna find out more?',
             action : 'question',
             category : ['general']
+        },'where is Singapore?' : {
+            ans : 'Wanna find out more?',
+            action : 'question',
+            category : ['general','singapore']
         }
     };
 

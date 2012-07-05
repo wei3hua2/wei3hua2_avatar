@@ -1,5 +1,5 @@
-wei3hua2.similar_suggest = (function(data) {
-    this.findSimilarQuestion = function(qn) {
+wei3hua2.similar_suggest_mapping = (function(data) {
+    this.findAnswer = function(qn) {
         var ans;
         _.find(similarQnMappers, function(mapper) {
             var mappedSug = mapper(qn);

@@ -1,6 +1,6 @@
-wei3hua2.answer_mapping = (function(data) {
+wei3hua2.user_answer_mapping = (function(data) {
 
-    this.replyAnswerFromPlayer = function(qn) {
+    this.findAnswer = function(qn) {
         var ans;
         _.find(responseMappers, function(mapper) {
             var mappedAns = mapper(qn);

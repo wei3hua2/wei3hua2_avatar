@@ -108,11 +108,15 @@ window.addEventListener("load", function() {
         'loader!scripts/avatar/wei3hua2_body.js', 
         'loader!scripts/avatar/util.js',
         
-        'loader!scripts/chat/suggest_data.js',
-        'loader!scripts/chat/answer_mapping.js',
-        'loader!scripts/chat/similar_suggest_mapping.js', 
+        
+        'loader!scripts/chat/mapper/direct_mapping.js',
+        'loader!scripts/chat/mapper/answer_mapping.js',
+        'loader!scripts/chat/mapper/similar_suggest_mapping.js',
+        
+        'loader!scripts/chat/suggest_data.js', 
         'loader!scripts/chat/suggests_resolver.js', 
-        'loader!scripts/chat/chat_box.js', 
+        'loader!scripts/chat/chat_box.js',
+         
         'loader!scripts/full_dom_operations.js']
     }, {
         complete : function() {

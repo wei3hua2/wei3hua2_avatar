@@ -12,11 +12,11 @@ wei3hua2.user_answer_mapping = (function(data) {
         
         switch(ans) {
             case('yes'):
-                return performYesResponse();
+                return performYesResponse(qn);
             case('no'):
-                return performNoResponse();
+                return performNoResponse(qn);
             case('dunknow'):
-                return performDunKnowResponse();
+                return performDunKnowResponse(qn);
         }
 
         return undefined;

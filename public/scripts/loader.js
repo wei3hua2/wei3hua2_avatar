@@ -113,7 +113,8 @@ window.addEventListener("load", function() {
         'loader!scripts/chat/mapper/answer_mapping.js',
         'loader!scripts/chat/mapper/similar_suggest_mapping.js',
         
-        'loader!scripts/chat/suggest_data.js', 
+        'loader!scripts/chat/suggest_data_list.js', 
+        'loader!scripts/chat/suggest_data.js',
         'loader!scripts/chat/suggests_resolver.js', 
         'loader!scripts/chat/chat_box.js',
          

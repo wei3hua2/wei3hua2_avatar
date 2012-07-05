@@ -19,8 +19,6 @@ wei3hua2.suggest_data = (function() {
 
     var suggestions = mergeSuggestions(suggestionsList);
     
-    console.log('sug : '+JSON.stringify(suggestions));
-
     var
     suggestNotFound = {
         'dir_qn' : '',

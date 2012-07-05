@@ -113,8 +113,13 @@ window.addEventListener("load", function() {
         'loader!scripts/chat/mapper/answer_mapping.js',
         'loader!scripts/chat/mapper/similar_suggest_mapping.js',
         
-        'loader!scripts/chat/suggest_data_list.js', 
-        'loader!scripts/chat/suggest_data.js',
+        'loader!scripts/chat/data/suggest_data_answer.js',
+        'loader!scripts/chat/data/suggest_data_casual.js',
+        'loader!scripts/chat/data/suggest_data_casual_short.js',
+        'loader!scripts/chat/data/suggest_data_jameschong.js',
+        'loader!scripts/chat/data/suggest_data_qn.js', 
+        'loader!scripts/chat/data/suggest_data.js',
+        
         'loader!scripts/chat/suggests_resolver.js', 
         'loader!scripts/chat/chat_box.js',
          

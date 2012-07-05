@@ -1,4 +1,4 @@
-buster.testCase("Similar Suggest Mapping", {
+buster.testCase("//Similar Suggest Mapping", {
     setUp: function(){
     },
     '//define' : function(){

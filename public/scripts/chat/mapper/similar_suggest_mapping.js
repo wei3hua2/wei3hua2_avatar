@@ -12,26 +12,26 @@ wei3hua2.similar_suggest_mapping = (function(data) {
     }
     var helloMapping = function(qn) {
         var ar = ['hello', 'hey', 'wassup'];
-        var result = 'hi';
+        var resultID = 'hi';
         
-        return _mapResult(ar,result)(qn);
+        return _mapResult(ar,resultID)(qn);
     }
     var nvmMapping = function(qn) {
         var ar = ['nvm'];
-        var result = 'nevermind';
+        var resultID = 'nvm';
         
-        return _mapResult(ar,result)(qn);
+        return _mapResult(ar,resultID)(qn);
     }
     var boringMapping = function(qn) {
         var ar = ['bored', 'i\'m bored'];
-        var result = 'boring';
+        var resultID = 'bored';
         
-        return _mapResult(ar,result)(qn);
+        return _mapResult(ar,resultID)(qn);
     }
     
-    var _mapResult = function(list, result) {
+    var _mapResult = function(list, resultID) {
         return function(question) {
-            return ( (_.include(list, question)) ? result : undefined );
+            return ( (_.include(list, question)) ? resultID : undefined );
         };
     }
 

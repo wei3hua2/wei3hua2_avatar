@@ -9,6 +9,7 @@ wei3hua2.user_answer_mapping = (function(data) {
                 return true;
             }
         });
+        
         switch(ans) {
             case('yes'):
                 return performYesResponse();

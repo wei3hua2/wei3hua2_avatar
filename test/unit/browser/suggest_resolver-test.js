@@ -1,4 +1,4 @@
-buster.testCase("Suggest Resolver", {
+buster.testCase("//Suggest Resolver", {
     setUp: function(){
     },
     '//define' : function(){

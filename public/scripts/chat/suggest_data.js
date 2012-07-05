@@ -1,75 +1,93 @@
-wei3hua2.suggest_data = (function() {
+wei3hua2.suggest_data = (function(){
     var history = [];
-    var suggestNotFound = {
+    var suggestNotFound = { 
+        dir_qn : '',
         ans : 'Huh? i don\'t understand what ya mean..',
-        action : 'normal'
+        ans_type : 'normal',
+        category : ['general']
     };
     var suggestions = {
-        'who are you?' : {
+         'whoyou': {
+            dir_qn : 'who are you?',
             ans : 'wei3hua2',
-            action : 'normal',
+            ans_type : 'normal',
+            expression : 'normal',
+            action : 'none',
             category : ['general']
         },
-        'you are cute!' : {
+        'thank' : {
+            dir_qn : 'you are cute!',
             ans : 'thank you',
-            action : 'normal',
+            ans_type : 'normal',
             category : ['general']
         },
-        'why am i here?' : {
+        'whyhere' : {
+            dir_qn : 'why am i here?',
             ans : 'probably looking for my alter ego, James Chong',
-            action : 'normal',
+            ans_type : 'normal',
             category : ['general']
         },
-        'what can you do?' : {
+        'cani' : {
+            dir_qn : 'what can you do?',
             ans : 'i can do many things',
-            action : 'normal',
+            ans_type : 'normal',
             category : ['general']
         },
         'hi' : {
+            dir_qn : 'hi',
             ans : 'wassup..',
-            action : 'normal',
+            ans_type : 'normal',
             category : ['general']
         },
-        'i love you' : {
+        'love' : {
+            dir_qn : 'i love you',
             ans : 'you don\'t know what love means',
-            action : 'normal',
+            ans_type : 'normal',
             category : ['general']
         },
-        'poor thing' : {
+        'poorme' : {
+            dir_qn : 'poor thing',
             ans : 'nah, i\'m not the self-pity kinda guy',
-            action : 'normal',
+            ans_type : 'normal',
             category : ['general'],
             dunShowInSuggest : true
         },
-        'nevermind' : {
+        'nvm' : {
+            dir_qn : 'nevermind',
             ans : 'Alrighty, cool..',
-            action : 'normal',
+            ans_type : 'normal',
             category : ['general'],
             dunShowInSuggest : true
         },
-        'boring' : {
+        'bored' : {
+            dir_qn : 'boring',
             ans : 'Want me to recommend some interesting site?',
-            action : 'normal',
+            ans_type : 'normal',
             category : ['general'],
             dunShowInSuggest : true
         },
-        'any sites to recommend?' : {
+        'siterec' : {
+            dir_qn : 'any sites to recommend?',
             ans : '9gag.com... Let me show you some interesting stuff?',
-            action : 'question',
+            ans_type : 'question',
             category : ['general']
         },
-        'who is James Chong' : {
+        'whojames' : {
+            dir_qn : 'who is James Chong',
             ans : 'He\'s my alter ego. We been sharing a body for decades years. Sharing shit with asshole is never easy, nature had it that both are meant for each other. so i decided to divorce his body & lease a body from sp-studio.de & manifest myself in cyber space',
-            action : 'normal',
+            ans_type : 'normal',
             category : ['general']
         },
-        'which country are you from?' : {
+        'whichcountry' : {
+            dir_qn : 'which country are you from?',
             ans : 'Singapore. Wanna find out more?',
-            action : 'question',
+            ans_type : 'question',
             category : ['general']
-        },'where is Singapore?' : {
+        },
+        'wheresg' : {
+            dir_qn : 'where is Singapore?',
             ans : 'Wanna find out more?',
-            action : 'question',
+            ans_type : 'question',
             category : ['general','singapore']
         }
     };

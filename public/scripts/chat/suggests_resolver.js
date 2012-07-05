@@ -10,22 +10,17 @@ wei3hua2.suggest = (function(data, suggestMapperClasses){
         var allSuggest = [];
         for(var s in data.suggestions){
             var answer = data.suggestions[s];
-            if(!answer.dunShowInSuggest)allSuggest.push(s);
+            if(!answer.dunShowInSuggest)allSuggest.push(answer['dir_qn']);
         }
         
         return allSuggest;
     }
 
     var resolve = function(suggest) {
-        var mapped = _mapAnswer(suggest);
-        var historyRecord = suggest;
-
-        if(mapped === data.suggestNotFound)
-            historyRecord = '';
-
-        data.history.push(historyRecord);
-
-        return mapped;
+        var mappedAnswer = _mapAnswer(suggest);
+        _storeHistory(mappedAnswer);
+        
+        return mappedAnswer;
     }
     var _mapAnswer = function(qn) {
         var answer;
@@ -43,6 +38,16 @@ wei3hua2.suggest = (function(data, suggestMapperClasses){
             answer = data.suggestNotFound;
 
         return answer;
+    }
+
+    var _storeHistory = function(answer){
+        data.history.push(_findSuggestionID(answer));
+    }
+    var _findSuggestionID = function(answer){
+        for(var id in data.suggestions){
+            if(answer===data.suggestions[id])return id;
+        }
+        return '';
     }
 
     return {

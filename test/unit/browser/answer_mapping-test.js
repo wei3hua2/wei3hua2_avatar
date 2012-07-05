@@ -1,4 +1,4 @@
-buster.testCase("Answer Mapping", {
+buster.testCase("//Answer Mapping", {
     setUp: function(){
     },
     '//define' : function(){

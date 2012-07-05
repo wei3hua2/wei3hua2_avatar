@@ -77,7 +77,7 @@ a:hover,
 a:focus {
 	text-shadow: 4px 4px 4px rgba(100,100,100,0.9);
 	
-	-webkit-transform: translateX(-50px) rotate(-10deg) scale(1.2);
+	/*-webkit-transform: translateX(-50px) rotate(-10deg) scale(1.2);
     -moz-transform:    translateX(10px);
     -ms-transform:     translateX(10px);
     -o-transform:      translateX(10px);
@@ -87,7 +87,7 @@ a:focus {
     -moz-transition:    0.5s;
     -ms-transition:     0.5s;
     -o-transition:      0.5s;
-    transition:         0.5s;
+    transition:         0.5s;*/
 }
 
 
@@ -175,7 +175,12 @@ a:focus {
 	background : #CCC;
 	/*opacity:1.0;*/
 }
-
+#map_content{
+	margin-left:15%;
+	margin-top:0%;
+	width:70%;
+	height:50%;
+}
 
 ::-webkit-input-placeholder {
 	opacity:0.3;

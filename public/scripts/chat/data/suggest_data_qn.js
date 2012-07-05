@@ -3,8 +3,9 @@ wei3hua2.suggest_data_qn = {
     "bored" : {
         "dir_qn" : "boring",
         "ans" : "Want me to recommend some interesting site?",
-        "ans_type" : "normal",
+        "ans_type" : "question",
         "category" : ["general"],
+        "action" : "show:site",
         "dunShowInSuggest" : true
     },
     "siterec" : {
@@ -13,16 +14,12 @@ wei3hua2.suggest_data_qn = {
         "ans_type" : "question",
         "category" : ["general"]
     },
-    "whichcountry" : {
-        "dir_qn" : "which country are you from?",
-        "ans" : "Singapore. Wanna find out more?",
-        "ans_type" : "question",
-        "category" : ["general"]
-    },
+    
     "wheresg" : {
         "dir_qn" : "where is Singapore?",
         "ans" : "Wanna find out more?",
         "ans_type" : "question",
+        "action" : "show:map",
         "category" : ["general", "singapore"]
     }
 }

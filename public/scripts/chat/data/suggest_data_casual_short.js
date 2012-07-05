@@ -33,6 +33,12 @@ wei3hua2.suggest_data_casual_short = {
         "expression" : "sarcasm",
         "category" : ["general"],
         "dunShowInSuggest" : true
-    }
+    },
+    "whichcountry" : {
+        "dir_qn" : "which country are you from?",
+        "ans" : "Singapore",
+        "ans_type" : "question",
+        "category" : ["general"]
+    },
 }
 ;

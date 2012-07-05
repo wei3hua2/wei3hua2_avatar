@@ -1,22 +1,22 @@
 wei3hua2.suggest_data_answer = {
-    "yeswhat" : {
+    "yes" : {
         "dir_qn" : "",
         "ans" : "",
-        "ans_type" : "normal",
+        "ans_type" : "answer",
         "category" : ["general"],
         "dunShowInSuggest" : true
     },
-    "nowhat" : {
+    "no" : {
         "dir_qn" : "",
         "ans" : "",
-        "ans_type" : "normal",
+        "ans_type" : "answer",
         "category" : ["general"],
         "dunShowInSuggest" : true
     },
-    "dunnowhat" : {
+    "dunno" : {
         "dir_qn" : "",
         "ans" : "",
-        "ans_type" : "normal",
+        "ans_type" : "answer",
         "category" : ["general"],
         "dunShowInSuggest" : true
     }

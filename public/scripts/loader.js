@@ -122,6 +122,8 @@ window.addEventListener("load", function() {
         
         'loader!scripts/chat/suggests_resolver.js', 
         'loader!scripts/chat/chat_box.js',
+        
+        'loader!scripts/third_party/google_map.js',
          
         'loader!scripts/full_dom_operations.js']
     }, {

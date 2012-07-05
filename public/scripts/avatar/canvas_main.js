@@ -15,6 +15,7 @@ wei3hua2.avatar = (function(options) {
         height : canvasHeight,
         fill : "#FFD2FF"
     });
+    var bglayer;
     
     var main_options = {
         canvasSize : {
@@ -31,7 +32,7 @@ wei3hua2.avatar = (function(options) {
     }
     
     function initBackground() {
-         var bglayer = new Kinetic.Layer();
+         bglayer = new Kinetic.Layer();
          bglayer.add(new Kinetic.Rect({
             x : 0,
             y : 0,
@@ -41,10 +42,9 @@ wei3hua2.avatar = (function(options) {
         }));
          stage.add(bglayer);
          
-         setMainCanvasEvents(bglayer,stage);
+         that.setMainCanvasEvents();
     }
-    function setMainCanvasEvents(bglayer,stage){
-        
+    this.setMainCanvasEvents = function(){
         bglayer.on('mousemove', function() {
             wei3hua2_main.updateMouseMovementReaction(stage.getMousePosition());
         });
@@ -56,8 +56,13 @@ wei3hua2.avatar = (function(options) {
         bglayer.on('mouseout', function() {
             wei3hua2_main.updateOutOfCanvasReaction(stage.getMousePosition());
         });
-
     }
+    
+    /*this.removeMainCanvasEvents = function(){
+        bglayer.off('mousemove');
+        bglayer.off('mouseover');
+        bglayer.off('mouseout');
+    }*/
     
     
     //INTERACTIVE FUNCTIONS
@@ -65,11 +70,10 @@ wei3hua2.avatar = (function(options) {
     this.talk = function(txt){
         wei3hua2_main.talk(txt);
     }
-    
-    // wei3hua2.pushTimeoutHandler(
-        // setTimeout(function(){
-            // that.talk.apply(this,['Wassup...']);
-        // },5000),true);
-    
+    this.showSingaporeInfo = function(){
+        wei3hua2.third_party_google_map.initGoogleMap()
+        //wei3hua2.third_party_google_map.initStaticMapImage();
+        wei3hua2.impress_api.next();
+    }
     
 });

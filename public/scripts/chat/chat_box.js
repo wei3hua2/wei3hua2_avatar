@@ -1,7 +1,7 @@
 wei3hua2.chat_box = (function(avatar){
 
 
-    var solution = new wei3hua2.suggest();
+    var solution = wei3hua2.suggest;
 
     $('#chat_text').typeahead({
         source : solution.getAllSuggests()
@@ -18,7 +18,7 @@ wei3hua2.chat_box = (function(avatar){
     }
     var talkToMe = function() {
         var qn = event.srcElement.value;
-        qn = qn.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+        qn = trimString(qn);
         
         if(!qn){
             event.srcElement.value = '';
@@ -37,6 +37,11 @@ wei3hua2.chat_box = (function(avatar){
     }
     var setPlaceHolderText = function(txt){
         $('#chat_text').attr('placeholder',txt);
+    }
+    
+    var trimString = function(str){
+        str = str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+        return str;
     }
     
     

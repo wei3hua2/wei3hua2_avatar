@@ -51,9 +51,13 @@ window.addEventListener("load", function() {
         return resource;
     });
     function progressUpdater() {
+
         function checkProgress() {
             var p = Math.round((numLoaded / numPreload) * 100);
-            document.getElementById('loading_progress_txt').innerHTML = p + '%';
+
+            var loadingInd = document.getElementById('loading_progress_txt');
+            if(loadingInd)
+                document.getElementById('loading_progress_txt').innerHTML = p + '%';
             if(p < 100)
                 setTimeout(checkProgress, 30);
         }
@@ -61,19 +65,25 @@ window.addEventListener("load", function() {
         checkProgress();
     }
 
+    function directToRootURL(){
+        location.hash = '#/progress';
+    }
+
 
     Modernizr.load([{
         load : ['loader!scripts/lib/my-impress.js']
     }, {
         complete : function() {
-            console.log('complete 1');
+            directToRootURL();
 
             progressUpdater();
 
-            var progress = document.getElementById('progress-container');
+            var progress = document.getElementById('progress');
             progress.style.display = 'block';
 
             impress().init();
+            
+            console.log('complete 1');
         }
     }]);
 
@@ -97,8 +107,11 @@ window.addEventListener("load", function() {
         'loader!scripts/avatar/wei3hua2_eyes.js', 
         'loader!scripts/avatar/wei3hua2_body.js', 
         'loader!scripts/avatar/util.js',
-         
-        'loader!scripts/chat/auto_complete_suggests.js', 
+        
+        'loader!scripts/chat/suggest_data.js',
+        'loader!scripts/chat/answer_mapping.js',
+        'loader!scripts/chat/similar_suggest_mapping.js', 
+        'loader!scripts/chat/suggests_resolver.js', 
         'loader!scripts/chat/chat_box.js', 
         'loader!scripts/full_dom_operations.js']
     }, {
@@ -118,8 +131,8 @@ window.addEventListener("load", function() {
 
                 switchLoadingToNormalScreen.apply(this);
             } catch(err) {
-                console.log('err : ' + err);
-                $('#progress-container').text('Oh oh... an error has occurred while loading, Please reload the browser');
+                console.log('err : ' + err.stack);
+                $('#progress').text('Oh oh... an error has occurred while loading, Please reload the browser');
             }
 
             console.log('complete 2');

@@ -129,7 +129,7 @@ a:focus {
 }
 
 
-#avatar_container{
+#avatar{
 	/*position : absolute;*/
 }
 #canvas_container {
@@ -163,7 +163,7 @@ a:focus {
 }
 
 
-#main_content_container{
+#content{
 	border-radius : 60px;
 	-moz-border-radius: 60px;
 	padding : 60px;
@@ -198,7 +198,7 @@ a:focus {
 .impress-enabled #impress { pointer-events: auto }
 
 
-#progress-container{
+#progress{
 	display : none;
 	width : 10em;
 	

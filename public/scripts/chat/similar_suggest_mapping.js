@@ -12,18 +12,29 @@ wei3hua2.similar_suggest = (function(data) {
     }
     var helloMapping = function(qn) {
         var ar = ['hello', 'hey', 'wassup'];
-        if(_.include(ar, qn))
-            return 'hi';
+        var result = 'hi';
+        
+        return _mapResult(ar,result)(qn);
     }
     var nvmMapping = function(qn) {
         var ar = ['nvm'];
-        if(_.include(ar, qn))
-            return 'nevermind';
+        var result = 'nevermind';
+        
+        return _mapResult(ar,result)(qn);
     }
     var boringMapping = function(qn) {
         var ar = ['bored', 'i\'m bored'];
-        if(_.include(ar, qn))
-            return 'boring';
+        var result = 'boring';
+        
+        return _mapResult(ar,result)(qn);
     }
+    
+    var _mapResult = function(list, result) {
+        return function(question) {
+            return ( (_.include(list, question)) ? result : undefined );
+        };
+    }
+
+    
     var similarQnMappers = [helloMapping, nvmMapping, boringMapping];
 });

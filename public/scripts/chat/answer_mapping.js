@@ -42,7 +42,7 @@ wei3hua2.answer_mapping = (function(data) {
             return 'no';
     }
     var dunknowMapping = function(qn) {
-        var ar = ['i don\'t know', 'oh'];
+        var ar = ['i don\'t know'];
         if(_.include(ar, qn))
             return 'dunknow';
     }

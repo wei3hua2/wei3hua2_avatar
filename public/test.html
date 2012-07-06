@@ -1,30 +1,32 @@
-<!DOCTYPE html>
-<html>
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-      #map_canvas { height: 100% }
-    </style>
-    <script type="text/javascript"
-      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDXX2gF2RT5rGFsgqyTj9C3UuuXWjVW_po&sensor=false">
-    </script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Google AJAX Search API Sample</title>
+    <script src="http://www.google.com/jsapi?key=AIzaSyDXX2gF2RT5rGFsgqyTj9C3UuuXWjVW_po" type="text/javascript"></script>
     <script type="text/javascript">
-      function initialize() {
-        var myOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
-            myOptions);
-      }
+    google.load('search', '1',{style: google.loader.themes.SHINY});
+    
+    function OnLoad() {
+      // Create a custom search control that uses a CSE restricted to code.google.com
+      var customSearchControl = new google.search.CustomSearchControl('012157912978810372049:-cv6ao3zqua');
+      //var customSearchControl = new google.search.CustomSearchControl();
+    
+      // Draw the control in content div
+      customSearchControl.draw('content'); 
+      
+      // run a query
+      customSearchControl.execute('ajax api');
+    }
+    google.setOnLoadCallback(OnLoad);
     </script>
   </head>
-  <body>
-    <!-- <div id="map_canvas"></div> -->
-    <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=10&size=500x312&maptype=roadmap&center=Singapore&sensor=false&key=AIzaSyDXX2gF2RT5rGFsgqyTj9C3UuuXWjVW_po"/>
-    
+  <body style="font-family: Arial;border: 0 none;">
+    <div id="content">Loading...</div>
   </body>
 </html>

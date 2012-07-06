@@ -24,7 +24,7 @@ wei3hua2.third_party_google_map = (function() {
         sensor : 'false',
         apiKey : 'AIzaSyDXX2gF2RT5rGFsgqyTj9C3UuuXWjVW_po'
     }
-    var initStaticMapImage = function() {
+    var initStaticMapImage = function(divID){
 
         if(!img) {
             static_map = _genImageElement();
@@ -32,9 +32,10 @@ wei3hua2.third_party_google_map = (function() {
             // window.open('http://maps.google.com.sg');
             // });
 
-            document.getElementById('map_content').appendChild(static_map);
+            document.getElementById(divID).appendChild(static_map);
         }
     }
+    
     var _genImageElement = function() {
         var img = new Image();
         var url = _genStaticMapUrl(defaultMapConfig);

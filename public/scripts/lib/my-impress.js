@@ -620,57 +620,17 @@
     document.addEventListener("impress:init", function (event) {
         
         var api = event.detail.api;
+        window.wei3hua2.impress_api = api; //set it for global access
         
-        //set it for global access
-        window.wei3hua2.impress_api = api;
-        
-
-
         document.addEventListener("keyup", function(event) {
             if( event.keyCode ===27 && !api.isFirstStep()){
                 api.goToFirstStep();
                 event.preventDefault();
             }
         }, false);
-
-
-
-
-        
-        /*
-        // delegated handler for clicking on the links to presentation steps
-        document.addEventListener("click", function ( event ) {
-            console.log('clicked.');
-            // event delegation with "bubbling"
-            // check if event target (or any of its parents is a link)
-            var target = event.target;
-            while ( (target.tagName !== "A") &&
-                    (target !== document.documentElement) ) {
-                console.log('tag : '+target.tagName+' , '+target.getAttribute('id')+' , ');
-                target = target.parentNode;
-            }
-            console.log('tagname : '+target.tagName);
-            if ( target.tagName === "A" ) {
-                var href = target.getAttribute("href");
-                
-                // if it's a link to presentation step, target this step
-                if ( href && href[0] === '#' ) {
-                    target = document.getElementById( href.slice(1) );
-                }
-                console.log('href : '+href);
-            }
-            
-            if ( api.goto(target) ) {
-                event.stopImmediatePropagation();
-                event.preventDefault();
-            }
-        }, false);*/
-        
-        
         
          //rescale presentation when window is resized
          window.addEventListener("resize", throttle(function () {
-             // force going to active step again, to trigger rescaling
              api.goto( document.querySelector(".active"), 500 );
          }, 250), false);
         

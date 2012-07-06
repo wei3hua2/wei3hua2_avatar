@@ -93,6 +93,7 @@ window.addEventListener("load", function() {
         'loader!scripts/lib/jquery-1.7.2.min.js', 
         'loader!scripts/lib/bootstrap.js',
         'loader!scripts/lib/underscore-min.js',
+        'loader!scripts/lib/my_util.js',
          
         'loader!img/wei3hua2.png', 
         'loader!img/wei3hua2_eyes_normal.png', 
@@ -107,6 +108,8 @@ window.addEventListener("load", function() {
         'loader!scripts/avatar/wei3hua2_eyes.js', 
         'loader!scripts/avatar/wei3hua2_body.js', 
         'loader!scripts/avatar/util.js',
+        
+        'loader!scripts/avatar/contentpanel/news_panel.js',
         
         
         'loader!scripts/chat/mapper/direct_mapping.js',
@@ -124,6 +127,7 @@ window.addEventListener("load", function() {
         'loader!scripts/chat/chat_box.js',
         
         'loader!scripts/third_party/google_map.js',
+        'loader!scripts/third_party/google_json_search.js',
          
         'loader!scripts/full_dom_operations.js']
     }, {

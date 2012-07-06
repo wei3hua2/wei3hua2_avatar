@@ -1,10 +1,10 @@
 <script src="scripts/loader.js"></script>
 <!-- <div id="progress-container" class='step' data-x='-1000' data-y='-500' data-z='-1000'>
-    Loading...   
+Loading...
 </div> -->
 <div id='impress'>
     <div id="progress" class='step' data-x='-1000' data-y='-500' data-z='-2000' data-scale='0.1'>
-    Loading...<span id='loading_progress_txt'></span>
+        Loading...<span id='loading_progress_txt'></span>
     </div>
     <div id="main_avatar_container">
         <div id="avatar" class="step">
@@ -14,7 +14,29 @@
             <input id="chat_text" type="text" placeholder="type here" data-provide="typeahead"/>
         </div>
     </div>
-    <div id="content" class="step" data-x='1100'>
-        <div id="map_content"/>
+    <div id="content" class="step" data-x='1300'>
+        <div class="row_fluid top_row">
+            <div id="map_content" class="span6"></div>
+            <div id="top_content" class="span6">
+                <input type='text' placeholder="Search Location" />
+                <div id="video_content">
+                    video
+                </div>
+            </div>
+        </div>
+        <div class="row_fluid">
+            <div id="twitter_content" class='span5'>
+                twitter
+            </div>
+            <!-- <div id="news_content" class='span6'> -->
+                <div id="news_content" class="carousel slide span6">
+                    <div class="carousel-inner">
+                    </div>
+                    
+                    <a class="carousel-control left" href="#news_content" data-slide="prev">&lsaquo;</a>
+                    <a class="carousel-control right" href="#news_content" data-slide="next">&rsaquo;</a>
+                </div>
+            <!-- </div> -->
+        </div>
     </div>
 </div>

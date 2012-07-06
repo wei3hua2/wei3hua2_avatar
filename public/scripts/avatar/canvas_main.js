@@ -4,6 +4,7 @@
 
 wei3hua2.avatar = (function(options) {
     var Me = wei3hua2.ui_me,
+    NewsPanel = wei3hua2.avatar_news_panel,
     canvasWidth = wei3hua2.settings.canvasWidth,
     canvasHeight = wei3hua2.settings.canvasHeight;
     
@@ -26,6 +27,8 @@ wei3hua2.avatar = (function(options) {
     
     var wei3hua2_main = new Me(main_options);
     
+    var news_panel = new NewsPanel();
+    
     this.init = function(){
         initBackground();
         stage.add(wei3hua2_main.getLayer());
@@ -38,7 +41,7 @@ wei3hua2.avatar = (function(options) {
             y : 0,
             width : canvasWidth,
             height : canvasHeight,
-            //fill : "#15324E"
+            fill : "#15324E"
         }));
          stage.add(bglayer);
          
@@ -71,8 +74,9 @@ wei3hua2.avatar = (function(options) {
         wei3hua2_main.talk(txt);
     }
     this.showSingaporeInfo = function(){
-        wei3hua2.third_party_google_map.initGoogleMap()
-        //wei3hua2.third_party_google_map.initStaticMapImage();
+        news_panel.initMap();
+        news_panel.updateNews();
+        
         wei3hua2.impress_api.next();
     }
     

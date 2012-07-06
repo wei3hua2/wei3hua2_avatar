@@ -164,22 +164,64 @@ a:focus {
 
 
 #content{
-	border-radius : 60px;
-	-moz-border-radius: 60px;
-	padding : 60px;
+	border-radius : 50px;
+	-moz-border-radius: 50px;
+	padding : 40px;
 	
 	box-shadow: 50px 50px 50px #000000;
 	
-	width : 60em;
-	height : 38em;
+	width : 75em;
+	height : 40em;
 	background : #CCC;
 	/*opacity:1.0;*/
 }
+#content .top_row{
+	height:40%;
+}
 #map_content{
-	margin-left:15%;
-	margin-top:0%;
-	width:70%;
-	height:50%;
+	width : 40%;
+	height : 100%;
+}
+#video_content{
+	background : white;
+}
+#twitter_content{
+	background : #1122FF;	
+}
+.carousel-inner{
+	height:100%;
+}
+#news_content{
+	background : #EEFFFF;
+	height:22em;
+	border-style:outset;
+	border-width:5px;
+}
+.news_item{
+	width:100%;
+	height:100%;
+}
+.news_title{
+	font-size:2em;
+	font-family:"Georgia";
+	background-color:rgba(0,0,0,0.7);
+	color:white;
+	padding:10px;
+	cursor : pointer;
+}
+.news_content{
+	background:transparent;
+}
+.news_date{
+	position:absolute;
+	font-size:1.4em;
+	font-family:"Comic Sans MS";
+	background-color:rgba(0,0,0,0.9);
+	font-weight:bolder;
+	right : 5px;
+	bottom : 5px;
+	padding : 3px;
+	color:white;
 }
 
 ::-webkit-input-placeholder {

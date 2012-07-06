@@ -9,7 +9,7 @@ wei3hua2.third_party_google_search = (function() {
     var defaultConfig = {
         version : '1.0',
         cb : '?',
-        rsz : 4,
+        rsz : 8,
         start : 0,
         query : 'singapore',
         gl : 'sg'

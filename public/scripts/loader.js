@@ -94,6 +94,7 @@ window.addEventListener("load", function() {
         'loader!scripts/lib/bootstrap.js',
         'loader!scripts/lib/underscore-min.js',
         'loader!scripts/lib/my_util.js',
+        'loader!scripts/lib/jquery.tweet.js',
          
         'loader!img/wei3hua2.png', 
         'loader!img/wei3hua2_eyes_normal.png', 
@@ -128,12 +129,13 @@ window.addEventListener("load", function() {
         
         'loader!scripts/third_party/google_map.js',
         'loader!scripts/third_party/google_json_search.js',
+        'loader!scripts/third_party/twitter_search.js',
+        //'loader!http://widgets.twimg.com/j/2/widget.js',
          
         'loader!scripts/full_dom_operations.js']
     }, {
         complete : function() {
             try {
-
                 var avatar = new wei3hua2.avatar({});
                 avatar.init();
 

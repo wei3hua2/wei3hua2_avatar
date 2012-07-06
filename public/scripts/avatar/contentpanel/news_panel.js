@@ -5,59 +5,64 @@ wei3hua2.avatar_news_panel = (function(options) {
     this.initMap = function() {
         wei3hua2.third_party_google_map.initGoogleMap(mapID);
     }
-    this.updateNews = function(){
+    this.updateNews = function() {
         $('.carousel').carousel();
         wei3hua2.third_party_google_search.retrieveSGNews(function(newsList) {
             _updateNewsDiv(newsList);
         });
     }
-    
-    
-    var _updateNewsDiv = function(news){
+    this.updateTwitterWidget = function() {
+        $(function($) {
+            $(twitterID).tweet({
+                avatar_size: 32,
+                count : 6,
+                query : "singapore",
+                loading_text : "searching twitter..."
+            });
+        });
+        //$(twitterID).append('<script>wei3hua2.third_party_twitter_search.makeTwitterWidget();</script>');
+    }
+    var _updateNewsDiv = function(news) {
         $('.carousel-inner').empty();
-        
+
         var firstItem = true;
-        _.each(news,function(n){
-            var item = _generateNewsItemDOM(n,firstItem);
-            
-            $('.carousel-inner').append(item);        
-            firstItem=false;
+        _.each(news, function(n) {
+            var item = _generateNewsItemDOM(n, firstItem);
+
+            $('.carousel-inner').append(item);
+            firstItem = false;
         });
     }
-    
-    var _generateNewsItemDOM = function(data,isactive){
+    var _generateNewsItemDOM = function(data, isactive) {
         var item = document.createElement('div');
-        if(isactive)item.setAttribute('class','news_item item active');
-        else item.setAttribute('class','news_item item');
-        
+        if(isactive)
+            item.setAttribute('class', 'news_item item active');
+        else
+            item.setAttribute('class', 'news_item item');
+
         var title = document.createElement('div');
-        title.setAttribute('class','news_title');
+        title.setAttribute('class', 'news_title');
         title.innerHTML = data.title;
-        
+
         $(title).popover({
             placement : 'bottom',
             content : data.content,
             delay : 100
         });
-        
-        // var content = document.createElement('div');
-        // content.setAttribute('class','news_content');
-        // content.innerHTML = data.content;
-        
+
         var date = document.createElement('div');
-        date.setAttribute('class','news_date');
+        date.setAttribute('class', 'news_date');
         date.innerHTML = wei3hua2.util.parseTimeDifference(Date.parse(data.date));
-        
-        if(data.imgUrl){
-            item.style.backgroundImage = "url(\'"+data.imgUrl+"\')";
+
+        if(data.imgUrl) {
+            item.style.backgroundImage = "url(\'" + data.imgUrl + "\')";
             item.style.backgroundRepeat = 'no-repeat';
             item.style.backgroundSize = '100%';
         }
-        
+
         item.appendChild(title);
-        //item.appendChild(content);
         item.appendChild(date);
-        
+
         return item;
     }
 });

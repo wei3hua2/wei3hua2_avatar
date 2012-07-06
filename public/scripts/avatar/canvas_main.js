@@ -76,6 +76,7 @@ wei3hua2.avatar = (function(options) {
     this.showSingaporeInfo = function(){
         news_panel.initMap();
         news_panel.updateNews();
+        news_panel.updateTwitterWidget();
         
         wei3hua2.impress_api.next();
     }

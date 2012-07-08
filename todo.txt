@@ -1,5 +1,7 @@
-- a content div
-- loading show 3D animation
-- track conversation history
 - fallback
 - feature detection
+- tag cloud (twits, news, search) topic & events,  with 3D effect
+- cartoon add emotion & converse dialog
+- revision history
+- google analytics 
+- facebook integration (next phase) 

@@ -12,8 +12,6 @@ wei3hua2.word_cloud_process_text = (function(rawText) {
         
     var TAG_MAX_LENGTH = 30;
 
-    var tags = {};
-
     this.processText = function(corpus) {
         return processTextWithAlgo(simpleWordCountRanking,corpus);
     }

@@ -19,7 +19,7 @@ wei3hua2.word_cloud = (function() {
               .timeInterval(10)
               .text(function(d) { return d; })
               .font("Impact")
-              .fontSize(function(d) { console.log('d.value : '+d.value);}) //return fontSize(+d.value); })
+              .fontSize(function(d) { console.log('dr:'+d.value+' , '+fontSize(+d.value)); return fontSize(+d.value); })
               .rotate(function(d) { return ~~(Math.random() * 5) * 30 - 60; })
               .padding(1)
               .on("word", progress)
@@ -64,7 +64,7 @@ wei3hua2.word_cloud = (function() {
           text.enter().append("text")
               .attr("text-anchor", "middle")
               .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })
-              .style("font-size", function(d) { return '12px';}) //console.log('font-size : '+d.size); return d.size + "px"; })
+              .style("font-size", function(d) { console.log('font-size : '+d.size); return d.size + "px"; })
               .on("click", function(d) {
                   console.log('clicked');
                 load(d.text);
@@ -99,28 +99,9 @@ wei3hua2.word_cloud = (function() {
               .attr("transform", "translate(" + [w >> 1, h >> 1] + ")scale(" + scale + ")");
                   
     }
-        
-    
-    /*function draw(words) {
-        d3.select(wordCloudID)
-            .append("svg")
-            .attr("width", 300).attr("height", 300)
-            .append("g")
-            .attr("transform", "translate(150,150)")
-            .selectAll("text")
-            .data(words).enter().append("text")
-            .style("font-size", function(d) {
-                return d.size + "px";
-            }).attr("text-anchor", "middle").attr("transform", function(d) {
-                return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-            }).text(function(d) {
-                return d.text;
-            });
-    }*/
     
     function progress(d) {
         console.log('d : '+JSON.stringify(d));
-      //statusText.text(++complete + "/" + max);
     }
     
     return{

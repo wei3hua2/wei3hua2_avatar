@@ -260,3 +260,53 @@ a:focus {
 	font-family:"Comic Sans MS";
 	font-size : 4em;
 }
+
+#wordcloud_control{
+	display: none;
+}
+
+#topic_title{
+	padding-top : 5px;
+	font-size : 2em;
+	font-family : "Impact";
+}
+
+#last_wordcloud_update{
+	padding-top : 12%;
+	padding-left : 2%;
+}
+
+#twit_modal_title{
+	font-family: Impact;
+	font-size : 1.3em;
+	background : rgb(230,240,230);
+}
+.twit_list_item{
+	position:relative;
+	width : 100%;
+	height : 5em;
+	/*background :#EEFFFF;*/
+	padding : 2px;
+	border-bottom:1px solid rgba(130,130,110,140);
+}
+
+.twit_list_item_pic{
+	float:left;
+	width : 50px;
+	height : 55px;
+}
+.twit_list_item_text{
+	float:left;
+	width : 90%;
+}
+.twit_list_item_username{
+	position : absolute;
+	bottom : 5px;
+	font-weight: bolder;
+}
+.twit_list_item_created{
+	position : absolute;
+	font-size : 14px;
+	bottom : 5px;
+	right : 5px;
+}

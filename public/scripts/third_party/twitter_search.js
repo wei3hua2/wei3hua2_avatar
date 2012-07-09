@@ -1,8 +1,18 @@
 wei3hua2.third_party_twitter_search = (function() {
-    var twitUrl = 'http://search.twitter.com/search.json?';
+    //var twitUrl = 'http://search.twitter.com/search.json?';
+    
+    var SG_TWITS_URL = 'http://search.twitter.com/search.json?';
+    var SG_TOPIC_URL = 'http://search.twitter.com/search.json?';
 
-    var defaultConfig = {
-        query : 'singapore'
+    var generalConfig = {
+        q : 'singapore',
+        lang : 'en',
+        rpp : 100
+    };
+    var topicConfig = {
+        geocode : '1.352083,103.819836,20mi',
+        lang : 'en',
+        rpp : 100
     };
 
     var twitterWidget;
@@ -11,9 +21,6 @@ wei3hua2.third_party_twitter_search = (function() {
     var makeTwitterWidget = function() {
         
         $.getScript('http://widgets.twimg.com/j/2/widget.js', function (data,txt,q) {
-            console.log('scripted'+data);
-            console.log('scripted'+txt);
-            console.log('scripted'+q.status);
             TWTR.Widget({
                 version : 2,
                 type : 'search',
@@ -42,61 +49,59 @@ wei3hua2.third_party_twitter_search = (function() {
                 }
             }).render().start();
         });
-        // if(!twitterWidget)
-            /*twitterWidget = new TWTR.Widget({
-                version : 2,
-                type : 'search',
-                search : 'singapore',
-                interval : 30000,
-                title : '',
-                subject : 'Singapore',
-                width : 'auto',
-                height : 200,
-                theme : {
-                    shell : {
-                        background : '#8ec1da',
-                        color : '#ffffff'
-                    },
-                    tweets : {
-                        background : '#ffffff',
-                        color : '#444444',
-                        links : '#1985b5'
-                    }
-                },
-                features : {
-                    scrollbar : true,
-                    loop : true,
-                    live : true,
-                    behavior : 'default'
-                }
-            }).render().start();*/
     }
-
     
+    var retrieveSGTopicTwits = function(keyword,cb){
+        var url = _parseUrl(SG_TOPIC_URL,topicConfig);
+        var encodedKeyword = encodeURIComponent(keyword);
+        
+        var encodedUrl = url+'&q='+encodedKeyword;
+        
+        _submitQuery(encodedUrl, function(raw) {
+            if(cb)cb(_transformTwitsInfo(raw));
+        });
+    }
     var retrieveSGTwits = function(cb) {
-        var url = _parseUrl(twitUrl, defaultConfig);
+        var url = _parseUrl(SG_TWITS_URL,generalConfig);
 
         _submitQuery(url, function(raw) {
-            console.log('json : ' + JSON.stringify(raw));
-            //if(cb)cb(_transformNewsInfo(raw));
+            if(cb)cb(_transformTwitsInfo(raw));
         });
     }
+    
+    var generateCorpus = function(cb){
+        retrieveSGTwits(function(data){
+            var corpus = '';
+            data.forEach(function(d){
+                corpus += d.text+' ';
+            });
+            cb(corpus,data);
+        });
+    }
+    var generateCorpusByKeyword = function(keyword,cb){
+        retrieveSGTopicTwits(keyword,function(data){
+            var corpus = '';
+            data.forEach(function(d){
+                corpus += d.text+' ';
+            });
+            cb(corpus,data);
+        });
+    }
+    
     var _transformTwitsInfo = function(rawResults) {
-        if(rawResults.responseStatus !== 200)
-            return undefined;
+        if(rawResults === undefined)return undefined;
 
-        var results = rawResults.responseData.results;
+        var results = rawResults.results;
 
         var filteredResult = _.map(results, function(result) {
-            var image = (result.image) ? result.image.url : '';
             return {
-                title : result.title,
-                url : result.url,
-                content : result.content,
-                date : result.publishedDate,
-                imgUrl : image
+                text : result.text,
+                username : result.from_user_name,
+                date : result.created_at,
+                imgUrl : result.profile_image_url
             }
         });
+        
         return filteredResult;
     }
     var _submitQuery = function(url, cb) {
@@ -104,18 +109,21 @@ wei3hua2.third_party_twitter_search = (function() {
             if(cb)
                 cb(resp);
         }).success(function() {
-            console.log('success');
+            //console.log('success');
         }).error(function(data) {
             console.log('error : ' + JSON.stringify(data));
         });
     }
     var _parseUrl = function(url, config) {
-        var query = 'q=' + config.query;
-        var cb = '&callback=?';
-
-        return url.concat(query, cb);
+        url = url + 'callback=?';
+        for(var key in config)url = url +'&'+key+'='+config[key];
+        
+        return url;
     }
     return {
-        makeTwitterWidget : makeTwitterWidget
+        makeTwitterWidget : makeTwitterWidget,
+        retrieveSGTwits : retrieveSGTwits,
+        generateCorpus : generateCorpus,
+        generateCorpusByKeyword : generateCorpusByKeyword
     }
 })();

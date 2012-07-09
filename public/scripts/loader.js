@@ -95,6 +95,8 @@ window.addEventListener("load", function() {
         'loader!scripts/lib/underscore-min.js',
         'loader!scripts/lib/my_util.js',
         'loader!scripts/lib/jquery.tweet.js',
+        'loader!scripts/lib/d3.v2.js',
+        'loader!scripts/lib/d3.layout.cloud.js',
          
         'loader!img/wei3hua2.png', 
         'loader!img/wei3hua2_eyes_normal.png', 
@@ -111,6 +113,9 @@ window.addEventListener("load", function() {
         'loader!scripts/avatar/util.js',
         
         'loader!scripts/avatar/contentpanel/news_panel.js',
+        'loader!scripts/avatar/contentpanel/wordcloud/display.js',
+        'loader!scripts/avatar/contentpanel/wordcloud/process_text.js',
+        'loader!scripts/avatar/contentpanel/wordcloud/main.js',
         
         
         'loader!scripts/chat/mapper/direct_mapping.js',

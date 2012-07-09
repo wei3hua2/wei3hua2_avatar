@@ -15,20 +15,28 @@ Loading...
         </div>
     </div>
     <div id="content" class="step" data-x='1300'>
-        <div class="row_fluid top_row">
+        <div id="wordcloud_content"class='span9'></div>
+        <%- partial('twit_list') %>
+        <div id="wordcloud_control" class="span3">
+            <input id="wordcloud_topic_search" type="text" placeholder="Enter a topic"/>
+            <div id="topic_title">What people say about Singapore!</div>
+            <div id="last_wordcloud_update"></div>
+        </div>
+        <!-- <div class="row_fluid top_row">
             <div id="map_content" class="span6"></div>
             <div id="top_content" class="span6">
-                <!-- <input type='text' placeholder="Search Location" /> -->
+                <input type='text' placeholder="Search Location" />
                 <div id="video_content">video</div>
             </div>
         </div>
         <div class="row_fluid">
+            
             <div id="twitter_content" class='span5'></div>
             <div id="news_content" class="carousel slide span6">
                 <div class="carousel-inner"></div>
                 <a class="carousel-control left" href="#news_content" data-slide="prev">&lsaquo;</a>
                 <a class="carousel-control right" href="#news_content" data-slide="next">&rsaquo;</a>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

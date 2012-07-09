@@ -1,6 +1,41 @@
 wei3hua2.avatar_news_panel = (function(options) {
 
+    var mainID = '#content';
     var mapID = '#map_content', newsID = '#news_content', twitterID = '#twitter_content', videoID = '#video_content';
+    
+    var wordCloudPanel;
+
+    this.updateWordCloud = function(){
+        if(!wordCloudPanel){
+            wordCloudPanel = wei3hua2.word_cloud_main;
+            
+            wordCloudPanel.startWordCloud(function(){
+                $('#wordcloud_control').show(1000);
+                
+                var curDate = new Date();
+                $('#last_wordcloud_update').html(curDate.toLocaleTimeString()+' '+curDate.toLocaleDateString());
+                $('#wordcloud_topic_search').focus();
+                $('#wordcloud_topic_search').keyup(function(event){
+                    if(event.keyCode===13){ //enter
+                        var keyword = $('#wordcloud_topic_search').val();
+                        if(keyword){
+                            console.log('entered : '+keyword);
+                            $('#topic_title').html('What Singaporeans say about '+keyword);
+                            
+                            wordCloudPanel.requery(keyword);
+                            $('#wordcloud_topic_search').val('');
+                            
+                            var curDate = new Date();
+                            $('#last_wordcloud_update')
+                                .html(curDate.toLocaleTimeString()+' '+curDate.toLocaleDateString());
+                        }
+                    }
+                });
+            });
+        }else{
+            //if($('#wordcloud_control').is(':hidden')){}
+        }
+    }
 
     this.initMap = function() {
         wei3hua2.third_party_google_map.initGoogleMap(mapID);

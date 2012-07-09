@@ -8,45 +8,20 @@
     </head>
     <body style="font-family: Arial;border: 0 none;">
         <div id="content">
-            Loading...
         </div>
         <div>
-            <div>wewewew</div>
-            <div>
-            <script>
-            new TWTR.Widget({
-                version : 2,
-                type : 'search',
-                search : 'singapore',
-                interval : 30000,
-                title : '',
-                subject : 'Singapore',
-                width : 200,
-                height : 200,
-                theme : {
-                    shell : {
-                        background : '#8ec1da',
-                        color : '#ffffff'
-                    },
-                    tweets : {
-                        background : '#ffffff',
-                        color : '#444444',
-                        links : '#1985b5'
-                    }
-                },
-                features : {
-                    scrollbar : true,
-                    loop : true,
-                    live : true,
-                    behavior : 'default'
-                }
-            }).render().start();
+        <script>
+            DISCARD = /^(.{1})$/;
+            DIGIT = /^(\d)$/;
+            TWITTER_SPECIFIC = /^(rt)$/;
+            
+            var a='rt';
+            var b='rta';
+            
+            
+            console.log(TWITTER_SPECIFIC.test(a));
+            console.log(TWITTER_SPECIFIC.test(b));
 
         </script>
-        </div>
-        </div>
-        <div>
-            ending
-        </div>
     </body>
 </html>

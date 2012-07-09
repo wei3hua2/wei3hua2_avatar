@@ -80,5 +80,9 @@ wei3hua2.avatar = (function(options) {
         
         wei3hua2.impress_api.next();
     }
+    this.showWordCloud = function(){
+        news_panel.updateWordCloud();
+        wei3hua2.impress_api.next();
+    }
     
 });

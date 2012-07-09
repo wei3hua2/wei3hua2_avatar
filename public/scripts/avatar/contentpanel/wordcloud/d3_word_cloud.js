@@ -1,8 +1,5 @@
 wei3hua2.word_cloud = (function() {
     
-    //http://search.twitter.com/search.json?q=singapore&lang=en
-    //http://search.twitter.com/search.json?q={word}&geocode=1.352083,103.819836,20mi&lang=en
-    
     var wordCloudID = '#word_cloud_content';
     
     var w = 960,

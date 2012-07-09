@@ -1,6 +1,7 @@
 - fallback
 - feature detection
 - tag cloud (twits, news, search) topic & events, with 3D effect
+- button to control word cloud navigation
 - cartoon add emotion & converse dialog
 - revision history
 - google analytics 

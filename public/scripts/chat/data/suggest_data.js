@@ -6,7 +6,8 @@ wei3hua2.suggest_data = (function() {
     wei3hua2.suggest_data_qn,
     wei3hua2.suggest_data_answer,
     wei3hua2.suggest_data_casual_short,
-    wei3hua2.suggest_data_jameschong];
+    wei3hua2.suggest_data_jameschong,
+    wei3hua2.suggest_data_vulgar];
 
     var mergeSuggestions = function(list){
         var combined = {};

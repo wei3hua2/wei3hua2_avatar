@@ -13,10 +13,6 @@ wei3hua2.ui_util = (function() {
         cb(image);
     }
     var initImgItem = function(imgObj, cb, myPosition, buffer) {
-        // imgObj.onload = function() {
-            // _loadImg(imgObj, cb, myPosition,buffer);
-        // };
-        // imgObj.src = imgUrl;
         var buf = buffer || {x:0,y:0};
         var kImage = new Kinetic.Image({
             x : myPosition.x + buf.x,
@@ -26,8 +22,21 @@ wei3hua2.ui_util = (function() {
         
         cb(kImage);
     }
+    var initImgItemWithoutCallback = function(imgObj, myPosition, buffer) {
+        var buf = buffer || {x:0,y:0};
+        var kImage = new Kinetic.Image({
+            x : myPosition.x + buf.x,
+            y : myPosition.y + buf.y,
+            image : imgObj
+        });
+        
+        return kImage;
+    }
+    
+    
     return {
-        initImgItem : initImgItem
+        initImgItem : initImgItem,
+        initImgItemWithoutCallback : initImgItemWithoutCallback
     }
 
 })();

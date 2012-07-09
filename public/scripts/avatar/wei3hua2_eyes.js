@@ -59,7 +59,16 @@ wei3hua2.ui_eyes = (function(myPosition) {
             layer.add(pupil.right);
         }, myPosition, eyesBuffer);
     }
-
+    this.hideEyes = function(){
+        pupil.left.hide();
+        pupil.right.hide();
+        eyesItem.hide();
+    }
+    this.showEyes = function(){
+        pupil.left.show();
+        pupil.right.show();
+        eyesItem.show();
+    }
 
     var proximityDistance = 5;
     this.trackMouseLocation = function(mousePos) {

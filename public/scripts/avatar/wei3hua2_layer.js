@@ -19,6 +19,8 @@ wei3hua2.ui_me = (function(options){
         x : canvasSize.width / 2 + widthBuffer,
         y : canvasSize.height / 2 + heightBuffer
     }
+    
+    var body_item = new bodyItemClass(myPosition);
 
     this.getLayer = function() {
         return layer;
@@ -41,9 +43,29 @@ wei3hua2.ui_me = (function(options){
         wei3hua2.pushTimeoutHandler(handler,true);
     }
     
+    this.turnAngry = function(){
+        var starthandler = setTimeout(function(){
+            body_item.changeEmotion('angry');
+            converse_item.hideMouth();
+            eyes_item.hideEyes();
+            layer.draw();
+        },300);
+        
+        var endhandler = setTimeout(function() {
+            body_item.changeEmotion('normal');
+            converse_item.showMouth();
+            eyes_item.showEyes();
+            layer.draw();
+        }, 2000);
+        
+        wei3hua2.pushTimeoutHandler(starthandler,true);
+        wei3hua2.pushTimeoutHandler(endhandler);
+    }
+    
     
     var _addItemToLayer = function(item){
         layer.add(item);
+        
     }
     
     var _setConverseItem = function(imgPos){
@@ -56,14 +78,10 @@ wei3hua2.ui_me = (function(options){
         eyes_item.init(layer);
     }
     
-    body_item = new bodyItemClass(myPosition);
+    body_item.init(layer);
     
-    body_item.init(function(kineticImg){
-        _addItemToLayer(kineticImg);
-        
-        var pos = {x:kineticImg.getX(), y:kineticImg.getY()};
-        _setConverseItem(pos);
-        _setEyesItem(pos);
-    });
+    var pos = {x:myPosition.x, y:myPosition.y};
+    _setConverseItem(pos);
+    _setEyesItem(pos);
 
 });

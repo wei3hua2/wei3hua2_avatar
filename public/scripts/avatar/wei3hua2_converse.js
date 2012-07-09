@@ -77,4 +77,11 @@ wei3hua2.ui_converse = (function(myPosition) {
         if(cb)
             cb();
     }
+    
+    this.showMouth = function(){
+        mouthItem.show();
+    }
+    this.hideMouth = function(){
+        mouthItem.hide();
+    }
 });

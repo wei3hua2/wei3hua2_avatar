@@ -73,6 +73,9 @@ wei3hua2.avatar = (function(options) {
     this.talk = function(txt){
         wei3hua2_main.talk(txt);
     }
+    this.turnAngry = function(){
+        wei3hua2_main.turnAngry();
+    }
     this.showSingaporeInfo = function(){
         news_panel.initMap();
         news_panel.updateNews();

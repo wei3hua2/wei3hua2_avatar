@@ -34,6 +34,9 @@ wei3hua2.chat_box = (function(avatar){
         if(resp.ans_type==='answer' && resp.action==='show:map'){
             avatar.showWordCloud();
             //avatar.showSingaporeInfo();
+        }else if(resp.action==='angry'){
+            console.log('angry');
+            avatar.turnAngry();
         }
         else avatar.talk(resp.ans);
     }

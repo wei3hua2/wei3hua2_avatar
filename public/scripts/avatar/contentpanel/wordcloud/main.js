@@ -56,9 +56,6 @@ wei3hua2.word_cloud_main = (function(){
                 itemSpan.innerHTML = item.date;
                 div.appendChild(itemSpan);
                 
-                console.log('date ;'+item.date);
-                console.log(itemSpan.innerHTML);
-                
                 $('#twit_list').append(div);
             });
             

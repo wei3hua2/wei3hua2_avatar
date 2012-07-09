@@ -98,7 +98,12 @@ window.addEventListener("load", function() {
         'loader!scripts/lib/d3.v2.js',
         'loader!scripts/lib/d3.layout.cloud.js',
          
-        'loader!img/wei3hua2.png', 
+        'loader!img/wei3hua2.png',
+        'loader!img/wei3hua2_angry.png',
+        'loader!img/wei3hua2_cute.png',
+        'loader!img/wei3hua2_naked.png',
+        'loader!img/wei3hua2_puzzled.png',
+        'loader!img/wei3hua2_shiok.png',     
         'loader!img/wei3hua2_eyes_normal.png', 
         'loader!img/mouth_open.png', 
         'loader!img/mouth_plain.png', 
@@ -109,7 +114,7 @@ window.addEventListener("load", function() {
         'loader!scripts/avatar/wei3hua2_layer.js', 
         'loader!scripts/avatar/wei3hua2_converse.js', 
         'loader!scripts/avatar/wei3hua2_eyes.js', 
-        'loader!scripts/avatar/wei3hua2_body.js', 
+        'loader!scripts/avatar/wei3hua2_body.js',
         'loader!scripts/avatar/util.js',
         
         'loader!scripts/avatar/contentpanel/news_panel.js',
@@ -126,7 +131,8 @@ window.addEventListener("load", function() {
         'loader!scripts/chat/data/suggest_data_casual.js',
         'loader!scripts/chat/data/suggest_data_casual_short.js',
         'loader!scripts/chat/data/suggest_data_jameschong.js',
-        'loader!scripts/chat/data/suggest_data_qn.js', 
+        'loader!scripts/chat/data/suggest_data_qn.js',
+        'loader!scripts/chat/data/suggest_data_vulgar.js', 
         'loader!scripts/chat/data/suggest_data.js',
         
         'loader!scripts/chat/suggests_resolver.js', 

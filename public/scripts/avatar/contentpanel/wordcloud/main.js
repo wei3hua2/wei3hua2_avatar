@@ -10,6 +10,8 @@ wei3hua2.word_cloud_main = (function(){
     $('#back_to_avatar').on('click',function(){
         wei3hua2.impress_api.goToFirstStep();
         $('#chat_text').focus();
+        
+        wei3hua2.addAnalyticsEvent('click','back - wordcloud');
     });
     
     var startWordCloud = function(cb){
@@ -35,6 +37,8 @@ wei3hua2.word_cloud_main = (function(){
             var filteredList = _.filter(twitlist,function(ele){
                 return processor.isWordExistInText(ele.text,tagElement.text);    
             });
+            
+            wei3hua2.addAnalyticsEvent('wordcloud','picked',tagElement.text);
             
             $('#twit_modal_title').html('on \"'+tagElement.text+'\"');
             

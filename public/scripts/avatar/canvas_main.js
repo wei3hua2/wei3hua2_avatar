@@ -97,6 +97,8 @@ wei3hua2.avatar = (function(options) {
     this.showWordCloud = function(){
         news_panel.updateWordCloud();
         wei3hua2.impress_api.next();
+        
+        wei3hua2.addTrackPageView('/wordcloud');
     }
     
 });

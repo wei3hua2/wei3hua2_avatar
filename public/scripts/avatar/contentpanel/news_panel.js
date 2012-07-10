@@ -19,7 +19,10 @@ wei3hua2.avatar_news_panel = (function(options) {
                     if(event.keyCode===13){ //enter
                         var keyword = $('#wordcloud_topic_search').val();
                         if(keyword){
-                            console.log('entered : '+keyword);
+                            
+                            
+                            wei3hua2.addAnalyticsEvent('wordcloud','search',keyword);
+                            
                             $('#topic_title').html('What Singaporeans say about '+keyword);
                             
                             wordCloudPanel.requery(keyword);

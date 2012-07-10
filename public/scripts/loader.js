@@ -1,3 +1,5 @@
+var _gaq = [['_setAccount', 'XXXXXXX']];
+
 var wei3hua2 = {
     images : {},
     settings : {
@@ -5,10 +7,21 @@ var wei3hua2 = {
         canvasHeight : 350
     },
     impress_api : undefined,
-    timeouts : []
+    timeouts : [],
+    addTrackPageView : function(url){
+        window._gaq.push(['_trackPageview',url]);
+    },
+    addAnalyticsEvent : function(category,action,label){
+        //category:chat, action:actionID, label:chatbox_msg
+        //category:exception, action: - , label: -
+        //category:click, action: back 
+        //category:wordcloud, action:search , label:<topic>
+        //category:wordcloud, action:picked , label:<topic> : <word>
+        window._gaq.push(['_trackEvent',category,action,label]);
+    }
 };
 
-window._gaq = [['_setAccount', '<%= googleAnalytics %>'], ['_trackPageview'], ['_trackPageLoadTime']];
+wei3hua2.addTrackPageView('/begin');
 
 wei3hua2.pushTimeoutHandler = function(timeout,newAction){
     if(newAction){
@@ -74,7 +87,6 @@ window.addEventListener("load", function() {
 
     Modernizr.load([{
         load : [
-        ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js',
         'loader!scripts/lib/my-impress.js']
     }, {
         complete : function() {
@@ -86,6 +98,8 @@ window.addEventListener("load", function() {
             progress.style.display = 'block';
 
             impress().init();
+            
+            wei3hua2.addTrackPageView('/loading');
         }
     }]);
 
@@ -99,6 +113,7 @@ window.addEventListener("load", function() {
         'loader!scripts/lib/jquery.tweet.js',
         'loader!scripts/lib/d3.v2.js',
         'loader!scripts/lib/d3.layout.cloud.js',
+        ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js',
         
         'loader!scripts/util/process_text.js',
          
@@ -161,9 +176,8 @@ window.addEventListener("load", function() {
 
                 switchLoadingToNormalScreen.apply(this);
                 
+                wei3hua2.addTrackPageView('/avatar');
                 
-                console.log('_g '+_gaq);
-                window._gaq.push(['_test', 'b1', 'page_loaded']);
             } catch(err) {
                 console.log('err : ' + err.stack);
                 $('#progress').text('Oh oh... an error has occurred while loading, Please reload the browser');

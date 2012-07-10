@@ -26,6 +26,8 @@ wei3hua2.chat_box = (function(avatar){
         var resp = solution.resolve(qn);
         performAvatarActionsConditions(resp);
         
+        wei3hua2.addAnalyticsEvent('chat', resp.dir_qn, qn);
+        
         _setPlaceHolderText(event.srcElement.value);
         _clearChatText();
     }

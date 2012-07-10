@@ -24,7 +24,7 @@ wei3hua2.suggest_data = (function() {
     suggestNotFound = {
         'dir_qn' : '',
         'ans' : 'Huh? i don\'t understand what ya mean..',
-        'ans_type' : 'normal',
+        'ans_type' : 'none',
         'category' : ['general']
     };
 

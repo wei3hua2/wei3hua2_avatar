@@ -33,10 +33,13 @@ wei3hua2.chat_box = (function(avatar){
     var performAvatarActionsConditions = function(resp){
         if(resp.ans_type==='answer' && resp.action==='show:map'){
             avatar.showWordCloud();
-            //avatar.showSingaporeInfo();
-        }else if(resp.action==='angry'){
-            console.log('angry');
+        }else if(resp.ans_type==='answer' && resp.action==='me:naked'){
+            avatar.turnNaked();
+        }
+        else if(resp.action==='angry'){
             avatar.turnAngry();
+        }else if(resp.ans_type==='none'){
+            avatar.turnPuzzled();
         }
         else avatar.talk(resp.ans);
     }

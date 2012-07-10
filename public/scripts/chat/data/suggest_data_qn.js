@@ -1,6 +1,6 @@
 wei3hua2.suggest_data_qn = {
     
-    "bored" : {
+    /*"bored" : {
         "dir_qn" : "boring",
         "ans" : "Want me to recommend some interesting site?",
         "ans_type" : "question",
@@ -13,14 +13,21 @@ wei3hua2.suggest_data_qn = {
         "ans" : "9gag.com... Let me show you some interesting stuff?",
         "ans_type" : "question",
         "category" : ["general"]
-    },
+    },*/
     
     "wheresg" : {
-        "dir_qn" : "where is Singapore?",
-        "ans" : "Wanna find out more?",
+        "dir_qn" : "Singapore?",
+        "ans" : "Wanna know more? yes or no",
         "ans_type" : "question",
         "action" : "show:map",
         "category" : ["general", "singapore"]
+    },
+    "naked" : {
+        "dir_qn" : "can i see you naked?",
+        "ans" : ".... are you sure?",
+        "ans_type" : "question",
+        "action" : "me:naked",
+        "category" : ["general"]
     }
 }
 ;

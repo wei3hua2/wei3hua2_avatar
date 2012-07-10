@@ -1,5 +1,6 @@
 wei3hua2.ui_converse = (function(myPosition) {
     var util = wei3hua2.ui_util;
+    var txtUtil = wei3hua2.process_text;
 
     var mouthPlain = 'img/mouth_plain.png';
     var mouthOpen = 'img/mouth_open.png';
@@ -31,7 +32,8 @@ wei3hua2.ui_converse = (function(myPosition) {
             offset : [10, 10],
             alpha : 0.2
         },
-        cornerRadius : 10
+        cornerRadius : 10,
+        alpha : 0.0
     });
 
     var mouthItem;
@@ -48,7 +50,6 @@ wei3hua2.ui_converse = (function(myPosition) {
         util.initImgItem(mouthPlainImg, function(kImage) {
             mouthItem = kImage;
                 
-            textItem.hide();
             layer.add(textItem);
             layer.add(mouthItem);
             
@@ -56,32 +57,84 @@ wei3hua2.ui_converse = (function(myPosition) {
     }
 
     this.talk = function(txt, cb) {
-        textItem.setText(txt);
+        var TEXT_DURATION = 4000;
+        var txtInParts = breakWordsInParts(txt);
         
-        mouthItem.setImage(mouthOpenImg);
-        //mouthImg.src = mouthOpen;
-
-        textItem.show();
-        mainLayer.draw();
-
-        var handler = setTimeout(function() {
-            if(textItem) {
-                textItem.hide();
-                mouthItem.setImage(mouthPlainImg);
-                mainLayer.draw();
-            }
-        }, 2000);
-        
-        wei3hua2.pushTimeoutHandler(handler);
+        for(var x=0;x<txtInParts.length;x++){
+            startTalkingInPart(txtInParts[x],TEXT_DURATION*x+300);
+            wei3hua2.pushTimeoutHandler(stopTalkingInPart(TEXT_DURATION*(x+1)));
+        }
         
         if(cb)
             cb();
     }
     
+    var breakWordsInParts = function(txt){
+        var WORDS_PER_PART = 15;
+        var words = txtUtil.splitText(txt);
+        var parts = [];
+        
+        var counter = 0, content = '';
+        words.forEach(function(w){
+            content = content.concat(w+' ');
+            counter++;
+            if(counter===WORDS_PER_PART){
+                counter=0;
+                parts.push(content.concat(''));
+                content = '';
+            }
+        });
+        parts.push(content);
+        
+        return parts;
+    }
+    
+    var startTalkingInPart = function(txt, delay){
+        return setTimeout(function(){
+            textItem.setText(txt);
+            
+            transitMouth(mouthOpenImg);
+            transitTextItem(1.0);
+            mainLayer.draw();    
+        },delay);
+    }
+    
+    var stopTalkingInPart = function(delay){
+        return setTimeout(function(){
+            if(textItem) {
+                transitTextItem(0.0);
+                transitMouth(mouthPlainImg);
+                mainLayer.draw();
+            }
+        },delay);
+    }
+
+    
+    
     this.showMouth = function(){
         mouthItem.show();
+        mouthItem.setImage(mouthPlainImg);
+        textItem.show();
+        textItem.setAlpha(0.0);
     }
     this.hideMouth = function(){
         mouthItem.hide();
+        textItem.hide();
     }
+
+    var transitTextItem = function(alp){
+        textItem.transitionTo({
+            alpha : alp,
+            duration : 0.1
+        });
+    }
+    var transitMouth = function(img){
+        mouthItem.setAlpha(0.0);
+        mouthItem.setImage(img);
+        mouthItem.transitionTo({
+            alpha : 1.0,
+            duration : 0.1
+        });
+    }
+
 });

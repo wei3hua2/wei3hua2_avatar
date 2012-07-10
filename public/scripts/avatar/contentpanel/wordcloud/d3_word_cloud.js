@@ -40,8 +40,6 @@ wei3hua2.word_cloud = (function() {
     }
     
     function draw(data, bounds) {
-        console.log('draw : '+JSON.stringify(data));
-                
           scale = bounds ? Math.min(
               w / Math.abs(bounds[1].x - w / 2),
               w / Math.abs(bounds[0].x - w / 2),
@@ -98,7 +96,6 @@ wei3hua2.word_cloud = (function() {
     }
     
     function progress(d) {
-        console.log('d : '+JSON.stringify(d));
     }
     
     return{

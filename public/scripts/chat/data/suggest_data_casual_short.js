@@ -39,6 +39,7 @@ wei3hua2.suggest_data_casual_short = {
         "ans" : "Singapore",
         "ans_type" : "question",
         "category" : ["general"]
-    },
+    }
+    
 }
 ;

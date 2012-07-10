@@ -2,7 +2,7 @@ var wei3hua2 = {
     images : {},
     settings : {
         canvasWidth : 900,
-        canvasHeight : 300
+        canvasHeight : 350
     },
     impress_api : undefined,
     timeouts : []
@@ -82,8 +82,6 @@ window.addEventListener("load", function() {
             progress.style.display = 'block';
 
             impress().init();
-            
-            console.log('complete 1');
         }
     }]);
 
@@ -97,6 +95,8 @@ window.addEventListener("load", function() {
         'loader!scripts/lib/jquery.tweet.js',
         'loader!scripts/lib/d3.v2.js',
         'loader!scripts/lib/d3.layout.cloud.js',
+        
+        'loader!scripts/util/process_text.js',
          
         'loader!img/wei3hua2.png',
         'loader!img/wei3hua2_angry.png',
@@ -111,6 +111,7 @@ window.addEventListener("load", function() {
         'loader!img/glyphicons-halflings-white.png', 
          
         'loader!scripts/avatar/canvas_main.js', 
+        'loader!scripts/avatar/background_effect.js',
         'loader!scripts/avatar/wei3hua2_layer.js', 
         'loader!scripts/avatar/wei3hua2_converse.js', 
         'loader!scripts/avatar/wei3hua2_eyes.js', 
@@ -140,10 +141,9 @@ window.addEventListener("load", function() {
         
         'loader!scripts/third_party/google_map.js',
         'loader!scripts/third_party/google_json_search.js',
-        'loader!scripts/third_party/twitter_search.js',
+        'loader!scripts/third_party/twitter_search.js'
         //'loader!http://widgets.twimg.com/j/2/widget.js',
-         
-        'loader!scripts/full_dom_operations.js']
+        ]
     }, {
         complete : function() {
             try {
@@ -155,16 +155,11 @@ window.addEventListener("load", function() {
 
                 performImpressOperation.apply(this, []);
 
-                //TODO
-                //wei3hua2.general_dom.initEvents();
-
                 switchLoadingToNormalScreen.apply(this);
             } catch(err) {
                 console.log('err : ' + err.stack);
                 $('#progress').text('Oh oh... an error has occurred while loading, Please reload the browser');
             }
-
-            console.log('complete 2');
         }
     }]);
 

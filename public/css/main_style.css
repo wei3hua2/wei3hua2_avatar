@@ -310,3 +310,12 @@ a:focus {
 	bottom : 5px;
 	right : 5px;
 }
+#back_to_avatar{
+	display:none;
+	font-size : 1.2em;
+	margin-left : 20px;
+	margin-bottom : 5px;
+	font-weight:bolder;
+	cursor:pointer;
+	text-decoration:underline;
+}

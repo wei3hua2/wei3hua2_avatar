@@ -16,36 +16,42 @@ wei3hua2.avatar = (function(options) {
         height : canvasHeight,
         fill : "#FFD2FF"
     });
-    var bglayer;
     
     var main_options = {
         canvasSize : {
             width : canvasWidth,
             height : canvasHeight
-        }
+        },
+        stage : stage
     };
     
-    var wei3hua2_main = new Me(main_options);
+    var wei3hua2_main;
     
     var news_panel = new NewsPanel();
     
+    var bgEffect,bglayer,bodyLayer;
+    
     this.init = function(){
         initBackground();
+        initAvatar();
+        
+        that.setMainCanvasEvents();
+        
         stage.add(wei3hua2_main.getLayer());
     }
     
     function initBackground() {
-         bglayer = new Kinetic.Layer();
-         bglayer.add(new Kinetic.Rect({
-            x : 0,
-            y : 0,
-            width : canvasWidth,
-            height : canvasHeight,
-            fill : "#15324E"
-        }));
-         stage.add(bglayer);
+         bgEffect = new wei3hua2.ui_background_effect({width:canvasWidth,height:canvasHeight});
          
-         that.setMainCanvasEvents();
+         bgEffect.addLayerstoStage(stage);
+         bgEffect.resetToDefault();
+         
+         bglayer = bgEffect.getMainBackgroundLayer();
+         
+    }
+    function initAvatar(){
+        wei3hua2_main = new Me(main_options);
+        bodyLayer = wei3hua2_main.getBodyLayer();
     }
     this.setMainCanvasEvents = function(){
         bglayer.on('mousemove', function() {
@@ -59,13 +65,15 @@ wei3hua2.avatar = (function(options) {
         bglayer.on('mouseout', function() {
             wei3hua2_main.updateOutOfCanvasReaction(stage.getMousePosition());
         });
+        
+        bodyLayer.on('mouseover', function(e) {
+            wei3hua2_main.turnShiok();
+        });
+        bodyLayer.on('mouseout', function(e) {
+            wei3hua2_main.turnDefault();
+        });
+        
     }
-    
-    /*this.removeMainCanvasEvents = function(){
-        bglayer.off('mousemove');
-        bglayer.off('mouseover');
-        bglayer.off('mouseout');
-    }*/
     
     
     //INTERACTIVE FUNCTIONS
@@ -76,13 +84,13 @@ wei3hua2.avatar = (function(options) {
     this.turnAngry = function(){
         wei3hua2_main.turnAngry();
     }
-    this.showSingaporeInfo = function(){
-        news_panel.initMap();
-        news_panel.updateNews();
-        news_panel.updateTwitterWidget();
-        
-        wei3hua2.impress_api.next();
+    this.turnPuzzled = function(){
+        wei3hua2_main.turnPuzzled();
     }
+    this.turnNaked = function(){
+        wei3hua2_main.turnNaked();
+    }
+    
     this.showWordCloud = function(){
         news_panel.updateWordCloud();
         wei3hua2.impress_api.next();

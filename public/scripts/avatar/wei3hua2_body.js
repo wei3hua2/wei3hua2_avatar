@@ -1,5 +1,7 @@
-wei3hua2.ui_body = (function(myPosition) {
+wei3hua2.ui_body = (function(myPosition,stg) {
+    var that = this;
     var util = wei3hua2.ui_util;
+    var stage = stg;
     
     var imgurl = {
         normal : 'img/wei3hua2.png',
@@ -11,32 +13,61 @@ wei3hua2.ui_body = (function(myPosition) {
     };
     var kineticImage = {};
     
-    var mainLayer;
+    var bodyLayer = new Kinetic.Layer();
+    var currentEmotion;
     
-    this.init = function(layer,cb){
-        mainLayer = layer;
+    this.init = function(cb){
+        currentEmotion = 'normal';
         
         for(var x in imgurl){
             kineticImage[x] = util.initImgItemWithoutCallback( 
                 wei3hua2.images[imgurl[x]] , myPosition );
 
-            mainLayer.add(kineticImage[x]);
-            kineticImage[x].hide();
+            bodyLayer.add(kineticImage[x]);
+            kineticImage[x].setAlpha(0.0);
         }
-        kineticImage['normal'].show();
+        kineticImage[currentEmotion].setAlpha(1.0);
+        kineticImage[currentEmotion].setZIndex(99);
+        
+        stage.add(bodyLayer);
         
         if(cb)cb();
     }
     
-    this.changeEmotion = function(emotion){
+    this.changeEmotion = function(emotion,transit){
+        
+        if(currentEmotion===emotion)return;
+        
+        currentEmotion = emotion;
         hideAllBodies();
-        kineticImage[emotion].show();
+        changeBody(kineticImage[currentEmotion],transit);
+    }
+    
+    this.getLayer = function(){
+        return bodyLayer;
+    }
+    
+    this.getCurrentEmotion = function(){
+        return currentEmotion.concat('');
     }
     
     var hideAllBodies = function(){
         for(var x in kineticImage)
-            kineticImage[x].hide();
+            kineticImage[x].setAlpha(0.0);
     }
+    var changeBody = function(body,isTransition){
+        if(isTransition)
+            body.transitionTo({
+                alpha : 1.0,
+                duration : 0.1
+            });
+        else{
+            body.setAlpha(1.0);
+            bodyLayer.draw();
+        }
+            
+    }
+    
     
     
 });

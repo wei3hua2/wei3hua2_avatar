@@ -7,8 +7,15 @@ wei3hua2.word_cloud_main = (function(){
     var display,processor;
     var twitlist;
     
+    $('#back_to_avatar').on('click',function(){
+        wei3hua2.impress_api.goToFirstStep();
+        $('#chat_text').focus();
+    });
+    
     var startWordCloud = function(cb){
         wei3hua2.third_party_twitter_search.generateCorpus(function(corpus,twitList){
+            $('#back_to_avatar').show();
+            
             twitlist=twitList;
             processor = new wei3hua2.word_cloud_process_text();
             var list = processor.processText(corpus);

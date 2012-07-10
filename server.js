@@ -9,7 +9,8 @@ var server = main.createServer(express,__dirname);
 
 var _handleMainRequest = function(req, res){
     res.render('main/index', {
-        layout : true
+        layout : true,
+        googleAnalytics : config.GOOGLE_ANALYTICS_ID
     });
 }
 

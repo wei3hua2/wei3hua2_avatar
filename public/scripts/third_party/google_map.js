@@ -22,7 +22,7 @@ wei3hua2.third_party_google_map = (function() {
         maptype : 'roadmap',
         center : 'Singapore',
         sensor : 'false',
-        apiKey : 'AIzaSyDXX2gF2RT5rGFsgqyTj9C3UuuXWjVW_po'
+        apiKey : 'XXXXXXXXXXXXXXXXXXX'
     }
     var initStaticMapImage = function(divID){
 

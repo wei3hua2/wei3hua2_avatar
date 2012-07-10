@@ -158,7 +158,7 @@ window.addEventListener("load", function() {
                 switchLoadingToNormalScreen.apply(this);
                 
                 
-                //console.log('_g '+_gaq);
+                console.log('_g '+_gaq);
                 window._gaq.push(['_test', 'b1', 'page_loaded']);
             } catch(err) {
                 console.log('err : ' + err.stack);

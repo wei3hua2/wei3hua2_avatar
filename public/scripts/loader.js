@@ -8,6 +8,8 @@ var wei3hua2 = {
     timeouts : []
 };
 
+window._gaq = [['_setAccount', '<%= googleAnalytics %>'], ['_trackPageview'], ['_trackPageLoadTime']];
+
 wei3hua2.pushTimeoutHandler = function(timeout,newAction){
     if(newAction){
         wei3hua2.timeouts.forEach(function(t){
@@ -71,7 +73,9 @@ window.addEventListener("load", function() {
 
 
     Modernizr.load([{
-        load : ['loader!scripts/lib/my-impress.js']
+        load : [
+        ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js',
+        'loader!scripts/lib/my-impress.js']
     }, {
         complete : function() {
             directToRootURL();

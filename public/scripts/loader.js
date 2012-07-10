@@ -1,4 +1,4 @@
-var _gaq = [['_setAccount', 'XXXXXXX']];
+var _gaq = [['_setAccount', 'UA-33279536-1']];
 
 var wei3hua2 = {
     images : {},
@@ -12,11 +12,6 @@ var wei3hua2 = {
         window._gaq.push(['_trackPageview',url]);
     },
     addAnalyticsEvent : function(category,action,label){
-        //category:chat, action:actionID, label:chatbox_msg
-        //category:exception, action: - , label: -
-        //category:click, action: back 
-        //category:wordcloud, action:search , label:<topic>
-        //category:wordcloud, action:picked , label:<topic> : <word>
         window._gaq.push(['_trackEvent',category,action,label]);
     }
 };

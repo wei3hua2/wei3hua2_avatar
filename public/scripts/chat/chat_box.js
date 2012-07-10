@@ -37,6 +37,8 @@ wei3hua2.chat_box = (function(avatar){
             avatar.showWordCloud();
         }else if(resp.ans_type==='answer' && resp.action==='me:naked'){
             avatar.turnNaked();
+        }else if(resp.ans_type==='answer' && resp.action==='site:source'){
+            window.open('https://github.com/wei3hua2/wei3hua2_avatar');
         }
         else if(resp.action==='angry'){
             avatar.turnAngry();

@@ -28,6 +28,13 @@ wei3hua2.suggest_data_qn = {
         "ans_type" : "question",
         "action" : "me:naked",
         "category" : ["general"]
+    },
+    "gitrepo" : {
+        "dir_qn" : "are you open source?",
+        "ans" : "so, u wanna see me nude?",
+        "ans_type" : "question",
+        "action" : "site:source",
+        "category" : ["general"]
     }
 }
 ;

@@ -158,7 +158,8 @@ window.addEventListener("load", function() {
                 switchLoadingToNormalScreen.apply(this);
                 
                 
-                //_gaq.push(['_test', 'b1', 'page_loaded']);
+                //console.log('_g '+_gaq);
+                window._gaq.push(['_test', 'b1', 'page_loaded']);
             } catch(err) {
                 console.log('err : ' + err.stack);
                 $('#progress').text('Oh oh... an error has occurred while loading, Please reload the browser');

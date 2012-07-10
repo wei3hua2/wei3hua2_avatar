@@ -72,9 +72,7 @@ wei3hua2.ui_me = (function(options){
     this.turnPuzzled = function(){
         var starthandler = setTimeout(function(){
             body_item.changeEmotion('puzzled');
-            converse_item.hideMouth();
-            eyes_item.hideEyes();
-            layer.draw();
+            hideOtherFeatures();
         },300);
         
         var endhandler = setTimeout(function() {
@@ -87,16 +85,12 @@ wei3hua2.ui_me = (function(options){
     
     this.turnShiok = function(){
         body_item.changeEmotion('shiok');
-        converse_item.hideMouth();
-        eyes_item.hideEyes();
-        layer.draw();
+        hideOtherFeatures();
     }
     this.turnNaked = function(){
         var starthandler = setTimeout(function() {
             body_item.changeEmotion('naked',true);
-            converse_item.hideMouth();
-            eyes_item.hideEyes();
-            layer.draw();
+            hideOtherFeatures();
         },300);
         wei3hua2.pushTimeoutHandler(starthandler,true);
         
@@ -105,10 +99,30 @@ wei3hua2.ui_me = (function(options){
         }, 3000);
         wei3hua2.pushTimeoutHandler(endhandler);
     }
+    this.turnCute = function(){
+        var starthandler = setTimeout(function() {
+            body_item.changeEmotion('cute',true);
+            hideOtherFeatures();
+        },300);
+        wei3hua2.pushTimeoutHandler(starthandler,true);
+        
+        var endhandler = setTimeout(function() {
+            that.turnDefault();
+        }, 3000);
+        wei3hua2.pushTimeoutHandler(endhandler);
+    }
+    
+    
     this.turnDefault = function(){
         body_item.changeEmotion('normal');
         converse_item.showMouth();
         eyes_item.showEyes();
+        layer.draw();
+    }
+    
+    var hideOtherFeatures = function(){
+        converse_item.hideMouth();
+        eyes_item.hideEyes();
         layer.draw();
     }
     

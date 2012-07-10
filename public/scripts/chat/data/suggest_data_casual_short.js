@@ -10,7 +10,7 @@ wei3hua2.suggest_data_casual_short = {
     "thank" : {
         "dir_qn" : "you are cute!",
         "ans" : "thank you",
-        "ans_type" : "normal",
+        "ans_type" : "thank",
         "category" : ["general"]
     },
     "hi" : {

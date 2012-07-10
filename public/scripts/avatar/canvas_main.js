@@ -90,6 +90,9 @@ wei3hua2.avatar = (function(options) {
     this.turnNaked = function(){
         wei3hua2_main.turnNaked();
     }
+    this.turnCute = function(){
+        wei3hua2_main.turnCute();
+    }
     
     this.showWordCloud = function(){
         news_panel.updateWordCloud();

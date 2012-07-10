@@ -38,7 +38,10 @@ wei3hua2.chat_box = (function(avatar){
         }
         else if(resp.action==='angry'){
             avatar.turnAngry();
-        }else if(resp.ans_type==='none'){
+        }else if(resp.ans_type==='thank'){
+            avatar.turnCute();
+        }
+        else if(resp.ans_type==='none'){
             avatar.turnPuzzled();
         }
         else avatar.talk(resp.ans);

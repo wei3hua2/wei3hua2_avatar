@@ -1,4 +1,3 @@
 - fallback
 - feature detection
-- google analytics 
 - facebook integration

@@ -29,6 +29,13 @@ wei3hua2.similar_suggest_mapping = (function(data) {
         return _mapResult(ar,resultID)(qn);
     }
     
+    var fuMapping = function(qn){
+        var ar = ['fuck', 'shit', 'shit you','stupid', 'retard'];
+        var resultID = 'fu';
+        
+        return _mapResult(ar,resultID)(qn);
+    }
+    
     var _mapResult = function(list, resultID) {
         return function(question) {
             return ( (_.include(list, question)) ? resultID : undefined );
@@ -36,5 +43,5 @@ wei3hua2.similar_suggest_mapping = (function(data) {
     }
 
     
-    var similarQnMappers = [helloMapping, nvmMapping, boringMapping];
+    var similarQnMappers = [helloMapping, nvmMapping, boringMapping, fuMapping];
 });

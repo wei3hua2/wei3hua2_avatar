@@ -35,6 +35,13 @@ wei3hua2.suggest_data_qn = {
         "ans_type" : "question",
         "action" : "site:source",
         "category" : ["general"]
+    },
+    "gitrepo" : {
+        "dir_qn" : "do you wanna see my fan page?",
+        "ans" : "for sure?",
+        "ans_type" : "question",
+        "action" : "site:facebookpage",
+        "category" : ["facebook"]
     }
 }
 ;

@@ -1,3 +1,0 @@
-- fallback
-- feature detection
-- facebook integration

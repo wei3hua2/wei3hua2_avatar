@@ -1,4 +1,4 @@
-var _gaq = [['_setAccount', 'UA-XXXXXXXX-X']];
+var _gaq = [['_setAccount', 'UA-33279536-1']];
 
 var wei3hua2 = {
     images : {},

@@ -2,7 +2,7 @@ wei3hua2.suggest_data_qn = {
     
     /*"bored" : {
         "dir_qn" : "boring",
-        "ans" : "Want me to recommend some interesting site?",
+        "ans" : "Want me to recommend some interesting site",
         "ans_type" : "question",
         "category" : ["general"],
         "action" : "show:site",
